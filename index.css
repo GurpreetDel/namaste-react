@@ -1,9 +1,8 @@
 /* 
  * index.css - Stylesheet for Namaste React application
  *
- * This file contains styling for the three different heading elements
- * created using different approaches (React, HTML, and JavaScript).
- * Each heading has a distinct color to visually differentiate them.
+ * This file contains styling for the different elements created in the application,
+ * including headings, nested components, and the header component.
  */
 
 /* Styling for the heading created with React */
@@ -19,4 +18,152 @@
 /* Styling for the heading created with JavaScript DOM manipulation */
 #jsHeading {
     color: green;
+}
+
+/* Styling for the app container */
+.app-container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styling for section titles */
+.section-title {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-left: 5px solid #0066cc;
+    margin-top: 30px;
+}
+
+/* Styling for the title component */
+.title {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.title h2 {
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.title h3 {
+    color: #777;
+}
+
+/* Styling for component composition example */
+.container {
+    background-color: #e6f7ff;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+#composedHeading {
+    color: #0066cc;
+}
+
+/* Styling for component usage demo */
+.usage-demo {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.method {
+    background-color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.demo {
+    background-color: #e6ffe6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Styling for example output */
+.example-output {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.example-output pre {
+    margin: 0;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* Styling for the header component */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo-img {
+    width: 100px;
+    height: auto;
+}
+
+.search-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    width: 60%;
+    font-size: 16px;
+}
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-button:hover {
+    background-color: #0055aa;
+}
+
+.user-icon {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
