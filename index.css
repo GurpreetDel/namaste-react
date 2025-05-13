@@ -1,14 +1,22 @@
-#reactHeading
-{
-    color:red;
+/* 
+ * index.css - Stylesheet for Namaste React application
+ *
+ * This file contains styling for the three different heading elements
+ * created using different approaches (React, HTML, and JavaScript).
+ * Each heading has a distinct color to visually differentiate them.
+ */
+
+/* Styling for the heading created with React */
+#reactHeading {
+    color: red;
 }
 
-#htmlHeading
-{
-    color:blue;
+/* Styling for the heading created with plain HTML */
+#htmlHeading {
+    color: blue;
 }
 
-#jsHeading
-{
-    color:green;
+/* Styling for the heading created with JavaScript DOM manipulation */
+#jsHeading {
+    color: green;
 }

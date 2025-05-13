@@ -1,28 +1,55 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- Character set declaration for proper text encoding -->
     <meta charset="UTF-8">
+    <!-- Responsive viewport settings for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Page title that appears in browser tab -->
     <title>Namaste React</title>
+    <!-- Link to external CSS stylesheet for styling -->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <div id="root">
-  <h1 id="htmlHeading">Hello World from HTML</h1>
-  </div>
+    <!-- 
+        Root container for our application
+        This demonstrates the first approach: Plain HTML
+    -->
+    <div id="root">
+        <h1 id="htmlHeading">Hello World from HTML</h1>
+    </div>
+
+    <!-- 
+        Inline JavaScript for DOM manipulation
+        This demonstrates the second approach: JavaScript DOM API
+    -->
     <script>
-      const heading=document.createElement("h1");
-      heading.innerHTML="Hello World from JS";
-      heading.id="jsHeading";
-      const root =document.getElementById("root");
-      root.appendChild(heading);
+        // Create a new h1 element using JavaScript
+        const heading = document.createElement("h1");
+        // Set the text content of the element
+        heading.innerHTML = "Hello World from JS";
+        // Set an ID for CSS styling
+        heading.id = "jsHeading";
+        // Get the root container element
+        const root = document.getElementById("root");
+        // Append the new element to the root container
+        root.appendChild(heading);
     </script>
 
+    <!-- 
+        React CDN links (commented out as we're using npm packages instead)
+        These would be used if we weren't using a bundler like Parcel
+    -->
+    <!--
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    -->
 
-  <!--<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
--->
-
-  <script type="module" src="app.js"></script>
+    <!-- 
+        Import our React application code as a module
+        This demonstrates the third approach: React components
+        The type="module" attribute allows us to use ES6 import/export syntax
+    -->
+    <script type="module" src="app2.js"></script>
 </body>
 </html>
