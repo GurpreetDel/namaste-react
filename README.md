@@ -70,12 +70,66 @@ namaste-react/
 
 4. Start the development server:
    ```
-   npx parcel index.html
+   npm start
    ```
 
 5. Open your browser and navigate to:
    ```
    http://localhost:1234
+   ```
+
+6. To build for production:
+   ```
+   npm run build
+   ```
+   This will create optimized files in the `dist` directory.
+
+## Project Setup from Scratch
+
+If you want to set up this project from scratch, follow these steps in sequence:
+
+1. Initialize a new npm project:
+   ```
+   npm init
+   ```
+   This will create a package.json file after you answer a few questions about your project.
+
+2. Install Parcel as a development dependency:
+   ```
+   npm install -D parcel
+   ```
+   Parcel is a web application bundler that will compile and serve our React application.
+
+3. Install React:
+   ```
+   npm install react
+   ```
+   This installs the core React library.
+
+4. Install React DOM:
+   ```
+   npm install react-dom
+   ```
+   This installs the React DOM library which is needed for web applications.
+
+5. Create your HTML, CSS, and JavaScript files (index.html, index.css, app.js).
+
+6. Start the development server:
+   ```
+   npx parcel index.html
+   ```
+   Or add a start script to your package.json and use:
+   ```
+   npm start
+   ```
+
+7. For production builds:
+   ```
+   npx parcel build index.html
+   ```
+   Or use the build script in package.json:
+   ```
+   npm run build
    ```
 
 ## Code Examples
@@ -119,6 +173,11 @@ root.render(heading);
 - React is imported as an npm package rather than using CDN links (which are commented out in the HTML file)
 
 - The application demonstrates the core concept of React's virtual DOM by creating elements with `React.createElement`
+
+- Browser compatibility is configured with browserslist to support:
+  - Last 2 versions of all browsers
+  - Browsers with more than 1% market share
+  - Browsers that are still maintained
 
 ## Future Enhancements
 

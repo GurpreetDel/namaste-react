@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "description": "this is description by Gurpreet React",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GurpreetDel/namaste-react.git"
