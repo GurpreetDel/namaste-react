@@ -1473,6 +1473,14 @@ function SearchableList({ items }) {
 
 Props (short for "properties") are a way to pass data from parent components to child components in React.
 
+#### What Are Props?
+
+Props are:
+- **JavaScript objects** that contain all the attributes passed to a component
+- **Read-only** values that should not be modified inside the receiving component
+- The primary way to pass data down the component tree in React
+- Similar to function arguments, but for React components
+
 #### Visual Representation:
 
 ```
@@ -1511,6 +1519,273 @@ Props (short for "properties") are a way to pass data from parent components to 
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+#### How to Pass Props to Components
+
+Props are passed to components as attributes in JSX, similar to HTML attributes:
+
+```jsx
+// Passing string props (use quotes)
+<RestaurantCard resName="Meghna Foods" cuisine="Biryani, North Indian, Asian" />
+
+// Passing numeric, boolean, or expression props (use curly braces)
+<RestaurantCard rating={4.4} isVeg={true} discount={20 + 5} />
+
+// Passing object props
+const restaurant = {
+  name: "Meghna Foods",
+  cuisine: "Biryani, North Indian, Asian",
+  rating: 4.4
+};
+<RestaurantCard data={restaurant} />
+
+// Passing function props
+<Button onClick={() => console.log("Clicked!")} />
+```
+
+#### How to Read Props in Components
+
+There are several ways to access props inside a component:
+
+##### 1. Using the props parameter directly:
+
+```jsx
+const RestaurantCard = (props) => {
+  console.log(props); // Log the entire props object
+  return (
+    <div>
+      <h3>{props.resName}</h3>
+      <p>{props.cuisine}</p>
+    </div>
+  );
+};
+```
+
+##### 2. Using destructuring in the parameter:
+
+```jsx
+const RestaurantCard = ({ resName, cuisine, rating }) => {
+  return (
+    <div>
+      <h3>{resName}</h3>
+      <p>{cuisine}</p>
+      <span>{rating} ★</span>
+    </div>
+  );
+};
+```
+
+##### 3. Using destructuring in the function body:
+
+```jsx
+const RestaurantCard = (props) => {
+  const { resName, cuisine, rating } = props;
+  return (
+    <div>
+      <h3>{resName}</h3>
+      <p>{cuisine}</p>
+      <span>{rating} ★</span>
+    </div>
+  );
+};
+```
+
+#### Real Example from Our Project
+
+In our food ordering app, we use props to make our RestaurantCard component dynamic:
+
+```jsx
+// Parent component (Body) passing props to child component
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="res-container">
+        <RestaurantCard 
+          resName="Meghna Foods" 
+          cuisine="Biryani, North Indian, Asian" 
+          rating="4.4" 
+          deliveryTime="38 minutes" 
+          price="₹200 for two"
+        />
+        <RestaurantCard 
+          resName="KFC" 
+          cuisine="Fast Food, Burgers, Sandwiches" 
+          rating="4.1" 
+          deliveryTime="25 minutes" 
+          price="₹400 for two"
+        />
+      </div>
+    </div>
+  );
+};
+
+// Child component receiving and using props
+const RestaurantCard = (props) => {
+  console.log("RestaurantCard props:", props);
+
+  return (
+    <div className="res-card">
+      <h3>{props.resName || "Restaurant Name"}</h3>
+      <h4>{props.cuisine || "Various Cuisines"}</h4>
+      <div>
+        <span>{props.rating || "4.0"} ★</span>
+        <h4>{props.deliveryTime || "30 minutes"}</h4>
+        <h4>{props.price || "₹300 for two"}</h4>
+      </div>
+    </div>
+  );
+};
+```
+
+#### Props vs. State
+
+It's important to understand the difference between props and state:
+
+- **Props** are passed from parent to child components and are read-only
+- **State** is managed within a component and can be changed by the component itself
+
+#### Default Props
+
+You can provide default values for props in case they're not passed:
+
+```jsx
+// Using default parameter values (ES6)
+const RestaurantCard = ({ resName = "Restaurant", rating = "4.0" }) => {
+  return (
+    <div>
+      <h3>{resName}</h3>
+      <span>{rating} ★</span>
+    </div>
+  );
+};
+
+// Using logical OR operator in JSX
+const RestaurantCard = (props) => {
+  return (
+    <div>
+      <h3>{props.resName || "Restaurant"}</h3>
+      <span>{props.rating || "4.0"} ★</span>
+    </div>
+  );
+};
+
+// Using defaultProps property (older approach)
+const RestaurantCard = (props) => {
+  return (
+    <div>
+      <h3>{props.resName}</h3>
+      <span>{props.rating} ★</span>
+    </div>
+  );
+};
+
+RestaurantCard.defaultProps = {
+  resName: "Restaurant",
+  rating: "4.0"
+};
+```
+
+#### Using JavaScript Objects as Props
+
+You can pass JavaScript objects as props and access their properties:
+
+```jsx
+// Creating a restaurant object
+const restaurantData = {
+  name: "Meghna Foods",
+  cuisine: "Biryani, North Indian, Asian",
+  rating: 4.4,
+  deliveryTime: "38 minutes",
+  price: "₹200 for two"
+};
+
+// Passing the object as a prop
+<RestaurantCard data={restaurantData} />
+
+// Accessing object properties in the component
+const RestaurantCard = (props) => {
+  return (
+    <div>
+      <h3>{props.data.name}</h3>
+      <p>{props.data.cuisine}</p>
+      <span>{props.data.rating} ★</span>
+    </div>
+  );
+};
+
+// Or using destructuring
+const RestaurantCard = ({ data }) => {
+  const { name, cuisine, rating } = data;
+  return (
+    <div>
+      <h3>{name}</h3>
+      <p>{cuisine}</p>
+      <span>{rating} ★</span>
+    </div>
+  );
+};
+```
+
+#### Spreading Props
+
+You can use the spread operator to pass all properties of an object as individual props:
+
+```jsx
+const restaurantData = {
+  resName: "Meghna Foods",
+  cuisine: "Biryani, North Indian, Asian",
+  rating: 4.4
+};
+
+// Spreading the object properties as individual props
+<RestaurantCard {...restaurantData} />
+
+// This is equivalent to:
+<RestaurantCard 
+  resName="Meghna Foods" 
+  cuisine="Biryani, North Indian, Asian" 
+  rating={4.4} 
+/>
+```
+
+#### Children Props
+
+React has a special prop called `children` that contains the content between opening and closing tags:
+
+```jsx
+// Passing children to a component
+<Card>
+  <h2>Special Offer</h2>
+  <p>20% off on all orders today!</p>
+</Card>
+
+// Accessing children in the component
+const Card = (props) => {
+  return (
+    <div className="card">
+      {props.children}
+    </div>
+  );
+};
+
+// Or using destructuring
+const Card = ({ children }) => {
+  return (
+    <div className="card">
+      {children}
+    </div>
+  );
+};
+```
+
+#### Best Practices for Props
+
+1. **Keep components pure**: Treat props as read-only and don't modify them
+2. **Use descriptive prop names**: Make your code self-documenting
+3. **Provide default values**: Handle cases where props might be missing
+4. **Destructure props**: For cleaner, more readable code
+5. **Validate props**: Use PropTypes or TypeScript for type checking
+6. **Keep props simple**: Pass only what the component needs
 
 #### Ways to Pass Props:
 

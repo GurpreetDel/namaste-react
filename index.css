@@ -213,10 +213,26 @@
 
 .res-card {
     width: 200px;
-    height: 300px;
-    border: 1px solid black;
+    height: 350px;
+    padding: 8px;
+    overflow: hidden;
+    word-wrap: break-word;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 4px;
+    font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
 }
 
+.res-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transform: translateY(-4px);
+    z-index: 1;
+    border: 1px solid #d3d5df;
+}
 .search {
     padding: 8px 12px;
 }
@@ -231,4 +247,9 @@
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 10px;
+}
+
+.res-logo {
+    padding: 5px;
+    width: 190px;
 }
