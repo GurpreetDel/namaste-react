@@ -70,14 +70,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         height: "180px", 
                         objectFit: "cover",
                         display: "block",
-                        position: "relative",
-                        margin: 0
+                        margin: 0,
+                        padding: 0,
+                        borderRadius: "8px 8px 0 0"
                     }}
                     alt={resData && resData.info ? resData.info.name : "Restaurant image"}
                 />
                 {/* Using props.resName instead of hardcoded value */}
                 <h3 style={{
                     margin: "10px 12px 5px 12px",
+                    padding: "0 8px",
                     fontSize: "17px",
                     fontWeight: "500",
                     color: "#3e4152",
@@ -95,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     overflow: "hidden",
                     marginBottom: "4px",
                     margin: "0 12px 4px 12px",
+                    padding: "0 8px",
                     color: "#686b78",
                     fontWeight: "400"
                 }}>{resData && resData.info && resData.info.cuisines ? resData.info.cuisines.join(", ") : props.cuisine || "Various Cuisines"}</h4>
@@ -102,7 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     borderTop: "1px solid #e9e9eb",
                     paddingTop: "8px",
                     marginTop: "8px",
-                    margin: "8px 12px 0 12px"
+                    margin: "8px 12px 0 12px",
+                    padding: "8px 8px 0 8px"
                 }}>
                     <div style={{
                         display: "flex",
@@ -145,7 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         fontSize: "11px",
                         fontWeight: "600",
                         display: "flex",
-                        alignItems: "center"
+                        alignItems: "center",
+                        padding: "0 8px 8px 8px"
                     }}>
                         <img 
                             src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_18,h_18/v1634558776/swiggy_one/OneIcon_3x.png" 

@@ -213,7 +213,7 @@
 
 .res-card {
     width: 23%;
-    padding: 0 0 8px 0;
+    padding: 0;
     overflow: hidden;
     word-wrap: break-word;
     border-radius: 8px;
