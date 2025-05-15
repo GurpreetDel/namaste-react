@@ -612,6 +612,200 @@ The Header component features:
 - A user icon on the right
 - CSS styling to make it look nice
 
+## CSS Styling in React
+
+React offers several approaches to styling components. This section explores the different methods with a focus on inline styling using JavaScript objects.
+
+### 1. Traditional CSS with className
+
+The most basic approach is using external CSS files and applying classes with the `className` prop (React's equivalent of HTML's `class` attribute):
+
+```jsx
+// In your component
+<div className="header">
+    <h1 className="title">Hello World</h1>
+</div>
+
+// In your CSS file
+.header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+.title {
+    color: blue;
+}
+```
+
+This approach is familiar to developers with HTML/CSS experience and allows for separation of concerns.
+
+### 2. Inline Styling with Style Objects
+
+React allows you to define styles directly in your JavaScript using objects. This is known as "CSS-in-JS" and offers several advantages:
+
+- **Dynamic styling** based on props or state
+- **Scoped styles** that won't affect other components
+- **No CSS class name conflicts**
+- **JavaScript power** for style manipulation
+
+#### Example: Pre-defined Style Object
+
+```jsx
+// Define a style object outside the component
+const styleCard = {
+    backgroundColor: "yellow",
+    borderRadius: "8px",
+    padding: "16px",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
+};
+
+// Use it in your component
+const Card = () => (
+    <div style={styleCard}>
+        <h2>Card Title</h2>
+        <p>Card content goes here</p>
+    </div>
+);
+```
+
+#### Example: Inline Style Object
+
+```jsx
+// Define styles directly in the JSX
+const Button = () => (
+    <button 
+        style={{ 
+            backgroundColor: "blue", 
+            color: "white",
+            padding: "8px 16px",
+            border: "none",
+            borderRadius: "4px"
+        }}
+    >
+        Click Me
+    </button>
+);
+```
+
+### Important Rules for Inline Styling in React
+
+1. **Use camelCase for CSS properties**:
+   - `background-color` becomes `backgroundColor`
+   - `font-size` becomes `fontSize`
+   - `border-radius` becomes `borderRadius`
+
+2. **Values are strings** (except for numbers):
+   ```jsx
+   // Correct
+   style={{ fontSize: "16px", margin: "10px", opacity: 0.8 }}
+
+   // Also correct (numbers automatically get "px" added)
+   style={{ fontSize: 16, margin: 10, opacity: 0.8 }}
+   ```
+
+3. **Double curly braces syntax**:
+   - Outer braces `{ }` are for embedding JavaScript in JSX
+   - Inner braces `{ }` define the object literal
+   ```jsx
+   <div style={{ color: "red" }}>Red Text</div>
+   ```
+
+### Visual Comparison of Styling Approaches
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  ┌─────────────────┐    ┌─────────────────┐            │
+│  │  External CSS   │    │  Inline Styles  │            │
+│  └─────────────────┘    └─────────────────┘            │
+│                                                         │
+│  className="header"     style={headerStyle}            │
+│                         style={{ color: "blue" }}      │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │ Pros:                 │ Pros:                   │   │
+│  │ • Separation of       │ • Co-located with       │   │
+│  │   concerns            │   component             │   │
+│  │ • Caching             │ • Dynamic styling       │   │
+│  │ • Media queries       │ • No class conflicts    │   │
+│  │ • Pseudo-classes      │ • JavaScript power      │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Real Example from Our Project
+
+In our food ordering app, we use both styling approaches:
+
+1. **External CSS with className** for the Header component:
+```jsx
+const Header = () => {
+    return (
+        <div className="header">
+            <div className="logo-container">
+                <img
+                    src="https://www.dealnloot.com/wp-content/uploads/2020/03/swiggy-logo-1.png"
+                    alt="Food Panda Logo"
+                    className="logo"
+                />
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+    );
+};
+```
+
+2. **Inline styling with objects** for the RestaurantCard component:
+```jsx
+// Pre-defined style object
+const styleCard = {
+    backgroundColor: "yellow"
+};
+
+const RestaurantCard = () => {
+    return (
+        <div className="res-card" style={styleCard}>
+            <img 
+                src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/x4uyxvihmg8qa3pddkgf"
+                // Inline style object
+                style={{ width: "100%", height: "auto", maxHeight: "70%" }}
+            />
+            <h3>Meghna Foods</h3>
+        </div>
+    );
+};
+```
+
+### When to Use Each Approach
+
+**Use External CSS with className when:**
+- You have complex styles with media queries and pseudo-classes
+- You want to leverage CSS features like animations and transitions
+- You're working with a large team that's familiar with traditional CSS
+- You want to benefit from browser caching of CSS files
+
+**Use Inline Styling with objects when:**
+- You need dynamic styles based on props or state
+- You want to ensure style encapsulation (no leaking styles)
+- You're building a self-contained component
+- You want to leverage JavaScript for style manipulation
+
+### Other Styling Approaches in React
+
+Beyond these two basic approaches, React ecosystem offers several advanced styling solutions:
+
+1. **CSS Modules**: Scoped CSS files that avoid global namespace conflicts
+2. **Styled Components**: A popular CSS-in-JS library for component-scoped styles
+3. **Emotion**: Another powerful CSS-in-JS library with great performance
+4. **Tailwind CSS**: A utility-first CSS framework that works well with React
+
 ## Future Enhancements
 
 - Add more complex component examples with state and props
