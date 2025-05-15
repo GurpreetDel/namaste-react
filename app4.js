@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     style={{ 
                         width: "100%", 
-                        height: "180px", 
+                        height: "280px", 
                         objectFit: "cover",
                         display: "block",
                         margin: 0,
