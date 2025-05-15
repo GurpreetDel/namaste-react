@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 />
                 {/* Using props.resName instead of hardcoded value */}
                 <h3 style={{
-                    margin: "10px 12px 5px 12px",
+                    margin: "8px 12px 4px 12px",
                     fontSize: "17px",
                     fontWeight: "500",
                     color: "#3e4152",
@@ -91,16 +91,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     textOverflow: "ellipsis", 
                     whiteSpace: "nowrap", 
                     overflow: "hidden",
-                    marginBottom: "4px",
-                    margin: "0 12px 4px 12px",
+                    margin: "0 12px 6px 12px",
                     color: "#686b78",
                     fontWeight: "400"
                 }}>{resData && resData.info && resData.info.cuisines ? resData.info.cuisines.join(", ") : props.cuisine || "Various Cuisines"}</h4>
                 <div style={{
                     borderTop: "1px solid #e9e9eb",
                     paddingTop: "8px",
-                    marginTop: "8px",
-                    margin: "8px 12px 0 12px"
+                    margin: "0 12px 0 12px"
                 }}>
                     <div style={{
                         display: "flex",
@@ -114,11 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span style={{ 
                                 backgroundColor: "#48c479", 
                                 color: "white", 
-                                padding: "0 5px", 
+                                padding: "0 4px", 
                                 borderRadius: "4px",
                                 fontSize: "12px",
                                 fontWeight: "600",
-                                marginRight: "8px",
+                                marginRight: "6px",
                                 height: "20px",
                                 display: "flex",
                                 alignItems: "center"
@@ -127,18 +125,20 @@ document.addEventListener('DOMContentLoaded', function() {
                                 fontSize: "12px", 
                                 margin: "0",
                                 color: "#686b78",
-                                fontWeight: "400"
+                                fontWeight: "400",
+                                lineHeight: "1.3"
                             }}>{resData && resData.info && resData.info.sla ? resData.info.sla.slaString : props.deliveryTime || "38 minutes"}</h4>
                         </div>
                         <h4 style={{ 
                             fontSize: "12px", 
                             margin: "0",
                             color: "#686b78",
-                            fontWeight: "400"
+                            fontWeight: "400",
+                            lineHeight: "1.3"
                         }}>{resData && resData.info ? resData.info.costForTwo : props.price || "₹200 for two"}</h4>
                     </div>
                     <div style={{
-                        marginTop: "10px",
+                        marginTop: "8px",
                         color: "#8a584b",
                         fontSize: "11px",
                         fontWeight: "600",
