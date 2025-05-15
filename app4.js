@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         width: "100%", 
                         height: "180px", 
                         borderRadius: "8px 8px 0 0",
-                        objectFit: "cover"
+                        objectFit: "contain"
                     }}
                     alt={resData && resData.info ? resData.info.name : "Restaurant image"}
                 />
