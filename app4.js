@@ -1867,7 +1867,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         />*/}
                         {/* Using map function to render RestaurantCard components */}
                         {resList.map((restaurant, index) => (
-                            <RestaurantCard key={index} resData={restaurant} />
+                            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
                         ))}
 {/*
                         <RestaurantCard 
