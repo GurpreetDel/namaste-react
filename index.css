@@ -170,7 +170,7 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #ffffff;
     padding: 0 80px;
@@ -200,11 +200,12 @@
 
 .location-container {
     display: flex;
-    flex-direction: column;
-    margin-right: auto;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
-    padding: 0 20px;
+    padding: 0 10px;
     position: relative;
+    margin-right: 20px;
 }
 
 .location-container:hover .location-title {
@@ -222,19 +223,21 @@
     border-style: solid;
     border-width: 5px 5px 0 5px;
     border-color: #fc8019 transparent transparent transparent;
+    margin-left: 5px;
 }
 
 .location-title {
     color: #3d4152;
     font-weight: 700;
     font-size: 16px;
-    margin-bottom: 2px;
+    margin-right: 8px;
     transition: color 0.2s ease;
 }
 
 .location-address {
     color: #686b78;
     font-size: 12px;
+    display: inline-block;
     max-width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -243,14 +246,14 @@
 
 .nav-items {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     font-size: 16px;
 }
 
 .nav-items > ul {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     list-style: none;
     margin: 0;
@@ -258,7 +261,7 @@
 }
 
 .nav-items > ul > li {
-    padding: 0 20px;
+    padding: 0 15px;
     text-align: center;
     margin: 0;
     font-weight: 500;
@@ -364,4 +367,155 @@
 .res-logo {
     padding: 5px;
     width: 190px;
+}
+
+.filter-btn {
+    margin:10px;
+    cursor: pointer;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3%;
+    margin: 100px auto 0;
+    justify-content: space-between;
+    padding: 20px 20px 0;
+    row-gap: 20px;
+    max-width: 1200px;
+}
+
+.shimmer-card {
+    width: 24.5%;
+    height: 320px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    position: relative;
+    margin: 0 0 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.shimmer-img {
+    width: 100%;
+    height: 220px;
+    background-color: #f0f0f0;
+    border-radius: 16px 16px 0 0;
+}
+
+.shimmer-details {
+    padding: 8px 12px;
+}
+
+.shimmer-name {
+    height: 20px;
+    width: 80%;
+    margin: 6px 0 2px 0;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.shimmer-cuisine {
+    height: 16px;
+    width: 60%;
+    margin: 4px 0;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.shimmer-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    border-top: 1px solid #e9e9eb;
+    padding-top: 8px;
+}
+
+.shimmer-rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.shimmer-rating {
+    height: 20px;
+    width: 40px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.shimmer-delivery-time {
+    height: 16px;
+    width: 60px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+.shimmer-price {
+    height: 16px;
+    width: 80px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.shimmer-offer {
+    height: 16px;
+    width: 70%;
+    margin-top: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.shimmer-animation {
+    background: linear-gradient(
+        to right,
+        #f6f6f6 0%,
+        #e0e0e0 20%,
+        #f6f6f6 40%,
+        #f6f6f6 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 1.5s infinite linear;
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-animation::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150px;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        transparent 100%
+    );
+    animation: shimmer-highlight 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+@keyframes shimmer-highlight {
+    0% {
+        left: -150px;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.search {
+    display: flex;
 }
