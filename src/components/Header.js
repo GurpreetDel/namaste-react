@@ -1,10 +1,15 @@
 import React from "react";
-import { useState} from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     // Initialize state directly with "Login"
+    console.log("Header rendered");
     const [btnNameReact, setBtnNameReact] = useState("Login");
 
+    useEffect(() => {
+        console.log("useEffect called , Header Component renders and refreshes and calls every time");
+    });
 
 
     console.log("Header Component renders and refreshes and calls every time");
@@ -39,6 +44,9 @@ const Header = () => {
                         <span className="new-tag">NEW</span>
                     </li>
                     <li>Help</li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
                     {/*<li>Gurpreet</li>*/}
                     <button className="login" onClick={ () => {
                         // Toggle between Login and Logout based on current state

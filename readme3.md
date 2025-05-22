@@ -340,6 +340,56 @@ URL: /about
 └─ Result: AppLayout with Header and About component
 ```
 
+## Navigation and Styling Issues
+
+### Adding Navigation Links
+
+For users to navigate between routes, we need to add navigation links to our application. We can use the `Link` component from react-router-dom to create these links:
+
+```jsx
+import { Link } from "react-router-dom";
+
+// Inside your component's JSX:
+<li><Link to="/">Home</Link></li>
+<li><Link to="/about">About</Link></li>
+<li><Link to="/contact">Contact</Link></li>
+```
+
+The `Link` component creates an anchor tag (`<a>`) but prevents the default page reload behavior, enabling client-side navigation.
+
+### Fixing Content Visibility with Fixed Headers
+
+When using a fixed header (with `position: fixed`), content can be hidden behind it. This is a common issue in single-page applications.
+
+**The Problem:**
+- The header is fixed at the top of the viewport with `position: fixed`
+- Content starts from the top of the page, getting hidden behind the header
+
+**The Solution:**
+1. Add margin or padding to the top of your content to push it below the header
+2. The margin should be at least equal to the height of your header
+
+```jsx
+// Example of adding margin-top to components
+const About = () => {
+    return (
+        <div style={{ marginTop: "100px", padding: "20px" }}>
+            <h1>About</h1>
+            {/* Content */}
+        </div>
+    );
+}
+```
+
+Alternatively, you can add a CSS class to handle this:
+
+```css
+.content-container {
+    margin-top: 100px; /* Adjust based on your header height */
+    padding: 20px;
+}
+```
+
 ## Conclusion
 
 Nested routes in React Router provide a powerful way to organize your application's UI and navigation. The `Outlet` component is the key to making nested routes work, serving as a placeholder where child components are rendered based on the URL.
@@ -351,3 +401,5 @@ When troubleshooting routing issues, always check for:
 2. Proper nesting of routes
 3. Correct usage of the `Outlet` component
 4. Proper import and export of components
+5. Navigation links for accessing routes
+6. CSS styling that might affect content visibility
