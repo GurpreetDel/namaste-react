@@ -3,6 +3,12 @@ import { createRoot } from 'react-dom/client';
 import Header from './components/Header';
 import Body from "./components/Body";
 import RestaurantCard from "./components/RestaurantCard";
+import {Outlet, Router, RouterProvider} from "react-router-dom";
+import { createBrowserRouter} from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+
 
 // Wait for DOM to be fully loaded before rendering React components
 document.addEventListener('DOMContentLoaded', function() {
@@ -1911,16 +1917,40 @@ document.addEventListener('DOMContentLoaded', function() {
             <div className="app">
                 {/*<h1>Hello World</h1>*/}
                 <Header />
-                <Body />
+                <Outlet/>
             </div>
         );
     }
 
+    const appRouter = createBrowserRouter([
+        {
+            path:"/",
+            element: <AppLayout />,
+            children:[
+                {
+                    path:"/",
+                    element:<Body/>
+                },
+                {
+                    path:"/about",
+                    element:<About/>
+                },
+                {
+                    path:"/contact",
+                    element:<Contact/>
+                }
+            ],
+            errorElement: <Error/>
+        }
+    ])
     // Create a root using React 18's createRoot API
     // This is the modern way to render React components to the DOM
     const root = createRoot(document.getElementById("react-root"));
 
     // Render the AppLayout component to the DOM
     // This will trigger the rendering of all nested components (Header, Body, RestaurantCard)
-    root.render(<AppLayout />);
+    //root.render(<AppLayout />);
+    root.render(
+        <RouterProvider router={appRouter} />
+            );
 });

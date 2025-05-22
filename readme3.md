@@ -226,8 +226,128 @@ root.render(
 
 5. **Avoid Redundant Routes**: In our example, the standalone routes for `/contact` and `/about` are redundant with the child routes and could be removed.
 
+## Troubleshooting: Fixing Route Conflicts
+
+### The Problem: Duplicate Routes
+
+In our original code, we had a routing configuration with duplicate routes:
+
+```jsx
+const appRouter = createBrowserRouter([
+    {
+        path:"/",
+        element: <AppLayout />,
+        children:[
+            {
+                path:"/",
+                element:<Body/>
+            },
+            {
+                path:"/about",
+                element:<About/>
+            },
+            {
+                path:"/contact",
+                element:<Contact/>
+            }
+        ],
+        errorElement: <Error/>
+    },
+    {
+        path:"/contact",
+        element: <Contact/>
+    },
+    {
+        path:"/about",
+        element: <About/>
+    }
+])
+```
+
+This created a conflict because:
+
+1. We had `/about` and `/contact` defined as child routes of the main route
+2. We also had them defined as standalone routes at the same level as the main route
+
+When React Router encounters multiple route definitions for the same path, it uses the first match it finds. In our case, the standalone routes were being matched first, bypassing the nested routes structure.
+
+### The Symptom
+
+The symptom of this issue was that when navigating to `/about` or `/contact`, only the standalone components were rendered, without the parent `AppLayout` component. This meant:
+
+- The `Header` component wasn't displayed
+- The `Outlet` component wasn't used
+- The content of `About` and `Contact` components was rendered directly, without the shared layout
+
+### The Solution
+
+The solution was to remove the duplicate standalone routes and keep only the nested routes:
+
+```jsx
+const appRouter = createBrowserRouter([
+    {
+        path:"/",
+        element: <AppLayout />,
+        children:[
+            {
+                path:"/",
+                element:<Body/>
+            },
+            {
+                path:"/about",
+                element:<About/>
+            },
+            {
+                path:"/contact",
+                element:<Contact/>
+            }
+        ],
+        errorElement: <Error/>
+    }
+])
+```
+
+With this configuration:
+
+1. When navigating to `/about`, React Router matches the main route first, renders `AppLayout`, and then matches the child route to render `About` in place of `Outlet`
+2. The same happens for `/contact`
+3. The shared layout (including the `Header`) is consistently displayed across all routes
+
+### Visual Comparison
+
+**Before (with duplicate routes):**
+
+```
+URL: /about
+│
+└─ Match standalone route: /about → Render About component directly
+   (AppLayout and Header are not rendered)
+```
+
+**After (with nested routes only):**
+
+```
+URL: /about
+│
+├─ Match parent route: / → Render AppLayout
+│  │
+│  ├─ Render Header (always present)
+│  │
+│  └─ Render Outlet (placeholder for child routes)
+│     │
+│     └─ Match child route: /about → Render About component
+│
+└─ Result: AppLayout with Header and About component
+```
+
 ## Conclusion
 
 Nested routes in React Router provide a powerful way to organize your application's UI and navigation. The `Outlet` component is the key to making nested routes work, serving as a placeholder where child components are rendered based on the URL.
 
 By understanding how the router configuration and the `Outlet` component work together, you can create complex, multi-level navigation structures while maintaining a clean and organized codebase.
+
+When troubleshooting routing issues, always check for:
+1. Duplicate route definitions
+2. Proper nesting of routes
+3. Correct usage of the `Outlet` component
+4. Proper import and export of components
