@@ -8,7 +8,7 @@ import { createBrowserRouter} from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-
+import RestaurantMenu from "./components/RestaurantMenu";
 
 // Wait for DOM to be fully loaded before rendering React components
 document.addEventListener('DOMContentLoaded', function() {
@@ -1938,6 +1938,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     path:"/contact",
                     element:<Contact/>
+                },
+                {
+                    path:"/restaurants/:resId",
+                    element: <RestaurantMenu/>
                 }
             ],
             errorElement: <Error/>
