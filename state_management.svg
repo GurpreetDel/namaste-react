@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">State Management Diagram</text>
+  
+  <!-- Body Component -->
+  <rect x="100" y="100" width="150" height="50" rx="10" ry="10" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="175" y="130" font-family="Arial" font-size="16" text-anchor="middle">Body Component</text>
+  
+  <!-- listOfRestaurants State -->
+  <rect x="50" y="200" width="150" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="125" y="230" font-family="Arial" font-size="16" text-anchor="middle">listOfRestaurants</text>
+  
+  <!-- filteredRestaurants State -->
+  <rect x="250" y="200" width="150" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="325" y="230" font-family="Arial" font-size="16" text-anchor="middle">filteredRestaurants</text>
+  
+  <!-- searchText State -->
+  <rect x="450" y="200" width="150" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="525" y="230" font-family="Arial" font-size="16" text-anchor="middle">searchText</text>
+  
+  <!-- RestaurantMenu Component -->
+  <rect x="600" y="100" width="150" height="50" rx="10" ry="10" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="675" y="125" font-family="Arial" font-size="14" text-anchor="middle">RestaurantMenu</text>
+  <text x="675" y="145" font-family="Arial" font-size="14" text-anchor="middle">Component</text>
+  
+  <!-- resInfo State -->
+  <rect x="600" y="200" width="150" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="675" y="230" font-family="Arial" font-size="16" text-anchor="middle">resInfo</text>
+  
+  <!-- User Search -->
+  <rect x="450" y="300" width="150" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="525" y="330" font-family="Arial" font-size="16" text-anchor="middle">User Search</text>
+  
+  <!-- User Filter -->
+  <rect x="250" y="300" width="150" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="325" y="330" font-family="Arial" font-size="16" text-anchor="middle">User Filter</text>
+  
+  <!-- API Response -->
+  <rect x="50" y="300" width="150" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="125" y="330" font-family="Arial" font-size="16" text-anchor="middle">API Response</text>
+  
+  <!-- Restaurant API Response -->
+  <rect x="600" y="300" width="150" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="675" y="325" font-family="Arial" font-size="14" text-anchor="middle">Restaurant API</text>
+  <text x="675" y="345" font-family="Arial" font-size="14" text-anchor="middle">Response</text>
+  
+  <!-- Connections -->
+  <!-- Body Component to States -->
+  <line x1="175" y1="150" x2="125" y2="200" stroke="#333" stroke-width="2" />
+  <polygon points="125,200 120,190 130,190" fill="#333" />
+  <text x="140" y="180" font-family="Arial" font-size="12" text-anchor="middle">useState</text>
+  
+  <line x1="175" y1="150" x2="325" y2="200" stroke="#333" stroke-width="2" />
+  <polygon points="325,200 320,190 330,190" fill="#333" />
+  <text x="250" y="180" font-family="Arial" font-size="12" text-anchor="middle">useState</text>
+  
+  <line x1="175" y1="150" x2="525" y2="200" stroke="#333" stroke-width="2" />
+  <polygon points="525,200 520,190 530,190" fill="#333" />
+  <text x="350" y="180" font-family="Arial" font-size="12" text-anchor="middle">useState</text>
+  
+  <!-- RestaurantMenu Component to resInfo State -->
+  <line x1="675" y1="150" x2="675" y2="200" stroke="#333" stroke-width="2" />
+  <polygon points="675,200 670,190 680,190" fill="#333" />
+  <text x="700" y="180" font-family="Arial" font-size="12" text-anchor="middle">useState</text>
+  
+  <!-- User Search to searchText State -->
+  <line x1="525" y1="300" x2="525" y2="250" stroke="#333" stroke-width="2" />
+  <polygon points="525,250 520,260 530,260" fill="#333" />
+  <text x="550" y="280" font-family="Arial" font-size="12" text-anchor="middle">Updates</text>
+  
+  <!-- searchText State to filteredRestaurants State -->
+  <line x1="450" y1="225" x2="400" y2="225" stroke="#333" stroke-width="2" />
+  <polygon points="400,225 410,220 410,230" fill="#333" />
+  <text x="425" y="215" font-family="Arial" font-size="12" text-anchor="middle">Filters</text>
+  
+  <!-- User Filter to filteredRestaurants State -->
+  <line x1="325" y1="300" x2="325" y2="250" stroke="#333" stroke-width="2" />
+  <polygon points="325,250 320,260 330,260" fill="#333" />
+  <text x="350" y="280" font-family="Arial" font-size="12" text-anchor="middle">Updates</text>
+  
+  <!-- API Response to listOfRestaurants State -->
+  <line x1="125" y1="300" x2="125" y2="250" stroke="#333" stroke-width="2" />
+  <polygon points="125,250 120,260 130,260" fill="#333" />
+  <text x="150" y="280" font-family="Arial" font-size="12" text-anchor="middle">Updates</text>
+  
+  <!-- listOfRestaurants State to filteredRestaurants State -->
+  <line x1="200" y1="225" x2="250" y2="225" stroke="#333" stroke-width="2" />
+  <polygon points="250,225 240,220 240,230" fill="#333" />
+  <text x="225" y="215" font-family="Arial" font-size="12" text-anchor="middle">Initial Value</text>
+  
+  <!-- Restaurant API Response to resInfo State -->
+  <line x1="675" y1="300" x2="675" y2="250" stroke="#333" stroke-width="2" />
+  <polygon points="675,250 670,260 680,260" fill="#333" />
+  <text x="700" y="280" font-family="Arial" font-size="12" text-anchor="middle">Updates</text>
+  
+  <!-- Data Flow Explanation -->
+  <rect x="50" y="400" width="700" height="150" rx="10" ry="10" fill="#fff" stroke="#333" stroke-width="1" />
+  <text x="400" y="420" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">State Management Flow</text>
+  
+  <text x="60" y="450" font-family="Arial" font-size="14">1. The Body component manages three state variables:</text>
+  <text x="80" y="470" font-family="Arial" font-size="14">- listOfRestaurants: Stores the original list of restaurants fetched from the API</text>
+  <text x="80" y="490" font-family="Arial" font-size="14">- filteredRestaurants: Stores the filtered list based on search or rating filters</text>
+  <text x="80" y="510" font-family="Arial" font-size="14">- searchText: Stores the current search text entered by the user</text>
+  
+  <text x="60" y="530" font-family="Arial" font-size="14">2. The RestaurantMenu component uses resInfo state to store restaurant details and menu items</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="570" width="20" height="20" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="80" y="585" font-family="Arial" font-size="14">Component</text>
+  
+  <rect x="200" y="570" width="20" height="20" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="230" y="585" font-family="Arial" font-size="14">State</text>
+  
+  <rect x="350" y="570" width="20" height="20" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="380" y="585" font-family="Arial" font-size="14">External Trigger</text>
+</svg>

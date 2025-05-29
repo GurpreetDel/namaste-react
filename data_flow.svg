@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Data Flow Diagram</text>
+  
+  <!-- User -->
+  <circle cx="400" cy="80" r="30" fill="#f9f" stroke="#333" stroke-width="2" />
+  <text x="400" y="85" font-family="Arial" font-size="16" text-anchor="middle">User</text>
+  
+  <!-- UI Components -->
+  <rect x="350" y="150" width="100" height="50" rx="10" ry="10" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="400" y="180" font-family="Arial" font-size="16" text-anchor="middle">UI Components</text>
+  
+  <!-- API Calls -->
+  <rect x="350" y="250" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="400" y="280" font-family="Arial" font-size="16" text-anchor="middle">API Calls</text>
+  
+  <!-- Swiggy API -->
+  <rect x="350" y="350" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="400" y="380" font-family="Arial" font-size="16" text-anchor="middle">Swiggy API</text>
+  
+  <!-- Component State -->
+  <rect x="350" y="450" width="100" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="400" y="480" font-family="Arial" font-size="16" text-anchor="middle">Component State</text>
+  
+  <!-- Connections -->
+  <!-- User to UI Components -->
+  <line x1="400" y1="110" x2="400" y2="150" stroke="#333" stroke-width="2" />
+  <polygon points="400,150 395,140 405,140" fill="#333" />
+  <text x="420" y="135" font-family="Arial" font-size="12">Interacts with</text>
+  
+  <!-- UI Components to API Calls -->
+  <line x1="400" y1="200" x2="400" y2="250" stroke="#333" stroke-width="2" />
+  <polygon points="400,250 395,240 405,240" fill="#333" />
+  <text x="420" y="230" font-family="Arial" font-size="12">Triggers</text>
+  
+  <!-- API Calls to Swiggy API -->
+  <line x1="400" y1="300" x2="400" y2="350" stroke="#333" stroke-width="2" />
+  <polygon points="400,350 395,340 405,340" fill="#333" />
+  <text x="420" y="330" font-family="Arial" font-size="12">Fetches data from</text>
+  
+  <!-- Swiggy API to API Calls -->
+  <path d="M 450 350 C 480 325 480 275 450 250" stroke="#333" stroke-width="2" fill="none" />
+  <polygon points="450,250 455,260 445,260" fill="#333" />
+  <text x="490" y="310" font-family="Arial" font-size="12">Returns data to</text>
+  
+  <!-- API Calls to Component State -->
+  <line x1="400" y1="300" x2="400" y2="450" stroke="#333" stroke-width="2" />
+  <polygon points="400,450 395,440 405,440" fill="#333" />
+  <text x="420" y="380" font-family="Arial" font-size="12">Updates</text>
+  
+  <!-- Component State to UI Components -->
+  <path d="M 350 450 C 320 425 320 175 350 150" stroke="#333" stroke-width="2" fill="none" />
+  <polygon points="350,150 345,160 355,160" fill="#333" />
+  <text x="280" y="310" font-family="Arial" font-size="12">Renders</text>
+  
+  <!-- Specific Components -->
+  <!-- Body Component -->
+  <rect x="100" y="250" width="100" height="50" rx="10" ry="10" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="150" y="280" font-family="Arial" font-size="16" text-anchor="middle">Body Component</text>
+  
+  <!-- Restaurant List API -->
+  <rect x="100" y="350" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="150" y="380" font-family="Arial" font-size="14" text-anchor="middle">Restaurant List API</text>
+  
+  <!-- Body to Restaurant List API -->
+  <line x1="150" y1="300" x2="150" y2="350" stroke="#333" stroke-width="2" />
+  <polygon points="150,350 145,340 155,340" fill="#333" />
+  <text x="170" y="330" font-family="Arial" font-size="12">Fetches</text>
+  
+  <!-- Restaurant List API to Body -->
+  <path d="M 200 350 C 230 325 230 275 200 250" stroke="#333" stroke-width="2" fill="none" />
+  <polygon points="200,250 205,260 195,260" fill="#333" />
+  <text x="240" y="310" font-family="Arial" font-size="12">Returns</text>
+  
+  <!-- RestaurantMenu Component -->
+  <rect x="600" y="250" width="100" height="50" rx="10" ry="10" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="650" y="275" font-family="Arial" font-size="14" text-anchor="middle">RestaurantMenu</text>
+  <text x="650" y="290" font-family="Arial" font-size="14" text-anchor="middle">Component</text>
+  
+  <!-- Restaurant Menu API -->
+  <rect x="600" y="350" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="650" y="375" font-family="Arial" font-size="14" text-anchor="middle">Restaurant</text>
+  <text x="650" y="390" font-family="Arial" font-size="14" text-anchor="middle">Menu API</text>
+  
+  <!-- RestaurantMenu to Restaurant Menu API -->
+  <line x1="650" y1="300" x2="650" y2="350" stroke="#333" stroke-width="2" />
+  <polygon points="650,350 645,340 655,340" fill="#333" />
+  <text x="670" y="330" font-family="Arial" font-size="12">Fetches</text>
+  
+  <!-- Restaurant Menu API to RestaurantMenu -->
+  <path d="M 600 350 C 570 325 570 275 600 250" stroke="#333" stroke-width="2" fill="none" />
+  <polygon points="600,250 605,260 595,260" fill="#333" />
+  <text x="540" y="310" font-family="Arial" font-size="12">Returns</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="520" width="20" height="20" fill="#f9f" stroke="#333" stroke-width="2" />
+  <text x="80" y="535" font-family="Arial" font-size="14">User</text>
+  
+  <rect x="200" y="520" width="20" height="20" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="230" y="535" font-family="Arial" font-size="14">UI Component</text>
+  
+  <rect x="350" y="520" width="20" height="20" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="380" y="535" font-family="Arial" font-size="14">API/Data Source</text>
+  
+  <rect x="500" y="520" width="20" height="20" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="530" y="535" font-family="Arial" font-size="14">State</text>
+  
+  <!-- Footer -->
+  <text x="400" y="580" font-family="Arial" font-size="12" text-anchor="middle">Namaste React Application - Data Flow</text>
+</svg>

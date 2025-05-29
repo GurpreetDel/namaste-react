@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Component Hierarchy Diagram</text>
+  
+  <!-- App Component -->
+  <rect x="350" y="60" width="100" height="50" rx="10" ry="10" fill="#f9f" stroke="#333" stroke-width="2" />
+  <text x="400" y="90" font-family="Arial" font-size="16" text-anchor="middle">App</text>
+  
+  <!-- AppLayout Component -->
+  <rect x="350" y="140" width="100" height="50" rx="10" ry="10" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="400" y="170" font-family="Arial" font-size="16" text-anchor="middle">AppLayout</text>
+  
+  <!-- Connection from App to AppLayout -->
+  <line x1="400" y1="110" x2="400" y2="140" stroke="#333" stroke-width="2" />
+  <polygon points="400,140 395,130 405,130" fill="#333" />
+  
+  <!-- Header Component -->
+  <rect x="200" y="220" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="250" y="250" font-family="Arial" font-size="16" text-anchor="middle">Header</text>
+  
+  <!-- Outlet Component -->
+  <rect x="500" y="220" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="550" y="250" font-family="Arial" font-size="16" text-anchor="middle">Outlet</text>
+  
+  <!-- Connections from AppLayout to Header and Outlet -->
+  <line x1="400" y1="190" x2="250" y2="220" stroke="#333" stroke-width="2" />
+  <polygon points="250,220 255,210 265,215" fill="#333" />
+  
+  <line x1="400" y1="190" x2="550" y2="220" stroke="#333" stroke-width="2" />
+  <polygon points="550,220 545,210 535,215" fill="#333" />
+  
+  <!-- Body Component -->
+  <rect x="350" y="300" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="400" y="330" font-family="Arial" font-size="16" text-anchor="middle">Body</text>
+  
+  <!-- About Component -->
+  <rect x="500" y="300" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="550" y="330" font-family="Arial" font-size="16" text-anchor="middle">About</text>
+  
+  <!-- Contact Component -->
+  <rect x="650" y="300" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="700" y="330" font-family="Arial" font-size="16" text-anchor="middle">Contact</text>
+  
+  <!-- RestaurantMenu Component -->
+  <rect x="200" y="300" width="100" height="50" rx="10" ry="10" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="250" y="330" font-family="Arial" font-size="14" text-anchor="middle">RestaurantMenu</text>
+  
+  <!-- Connections from Outlet to child routes -->
+  <line x1="550" y1="270" x2="400" y2="300" stroke="#333" stroke-width="2" />
+  <polygon points="400,300 405,290 415,295" fill="#333" />
+  
+  <line x1="550" y1="270" x2="550" y2="300" stroke="#333" stroke-width="2" />
+  <polygon points="550,300 545,290 555,290" fill="#333" />
+  
+  <line x1="550" y1="270" x2="700" y2="300" stroke="#333" stroke-width="2" />
+  <polygon points="700,300 695,290 685,295" fill="#333" />
+  
+  <line x1="550" y1="270" x2="250" y2="300" stroke="#333" stroke-width="2" />
+  <polygon points="250,300 255,290 265,295" fill="#333" />
+  
+  <!-- RestaurantCard Component -->
+  <rect x="300" y="380" width="100" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="350" y="410" font-family="Arial" font-size="14" text-anchor="middle">RestaurantCard</text>
+  
+  <!-- Shimmer Component for Body -->
+  <rect x="430" y="380" width="100" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="480" y="410" font-family="Arial" font-size="16" text-anchor="middle">Shimmer</text>
+  
+  <!-- Shimmer Component for RestaurantMenu -->
+  <rect x="200" y="380" width="100" height="50" rx="10" ry="10" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="250" y="410" font-family="Arial" font-size="16" text-anchor="middle">Shimmer</text>
+  
+  <!-- Connections from Body to RestaurantCard and Shimmer -->
+  <line x1="400" y1="350" x2="350" y2="380" stroke="#333" stroke-width="2" />
+  <polygon points="350,380 355,370 365,375" fill="#333" />
+  
+  <line x1="400" y1="350" x2="480" y2="380" stroke="#333" stroke-width="2" />
+  <polygon points="480,380 475,370 465,375" fill="#333" />
+  
+  <!-- Connection from RestaurantMenu to Shimmer -->
+  <line x1="250" y1="350" x2="250" y2="380" stroke="#333" stroke-width="2" />
+  <polygon points="250,380 245,370 255,370" fill="#333" />
+  
+  <!-- Legend -->
+  <rect x="50" y="480" width="20" height="20" fill="#f9f" stroke="#333" stroke-width="2" />
+  <text x="80" y="495" font-family="Arial" font-size="14">Root Component</text>
+  
+  <rect x="50" y="510" width="20" height="20" fill="#bbf" stroke="#333" stroke-width="2" />
+  <text x="80" y="525" font-family="Arial" font-size="14">Layout Component</text>
+  
+  <rect x="50" y="540" width="20" height="20" fill="#dfd" stroke="#333" stroke-width="2" />
+  <text x="80" y="555" font-family="Arial" font-size="14">Page Component</text>
+  
+  <rect x="300" y="480" width="20" height="20" fill="#ffd" stroke="#333" stroke-width="2" />
+  <text x="330" y="495" font-family="Arial" font-size="14">UI Component</text>
+  
+  <!-- Footer -->
+  <text x="400" y="580" font-family="Arial" font-size="12" text-anchor="middle">Namaste React Application - Component Hierarchy</text>
+</svg>
