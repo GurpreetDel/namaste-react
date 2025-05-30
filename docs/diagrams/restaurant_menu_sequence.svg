@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Restaurant Menu Loading Sequence</text>
+  
+  <!-- Actors/Components -->
+  <rect x="50" y="70" width="120" height="50" rx="5" ry="5" fill="#dae8fc" stroke="#6c8ebf" stroke-width="2" />
+  <text x="110" y="100" font-family="Arial" font-size="14" text-anchor="middle">User</text>
+  <line x1="110" y1="120" x2="110" y2="550" stroke="#6c8ebf" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <rect x="220" y="70" width="120" height="50" rx="5" ry="5" fill="#d5e8d4" stroke="#82b366" stroke-width="2" />
+  <text x="280" y="100" font-family="Arial" font-size="14" text-anchor="middle">Router</text>
+  <line x1="280" y1="120" x2="280" y2="550" stroke="#82b366" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <rect x="390" y="70" width="120" height="50" rx="5" ry="5" fill="#ffe6cc" stroke="#d79b00" stroke-width="2" />
+  <text x="450" y="100" font-family="Arial" font-size="14" text-anchor="middle">RestaurantMenu</text>
+  <line x1="450" y1="120" x2="450" y2="550" stroke="#d79b00" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <rect x="560" y="70" width="120" height="50" rx="5" ry="5" fill="#fff2cc" stroke="#d6b656" stroke-width="2" />
+  <text x="620" y="100" font-family="Arial" font-size="14" text-anchor="middle">Swiggy API</text>
+  <line x1="620" y1="120" x2="620" y2="550" stroke="#d6b656" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <!-- Sequence Interactions -->
+  <!-- User clicks restaurant -->
+  <line x1="110" y1="150" x2="280" y2="150" stroke="#333" stroke-width="2" />
+  <polygon points="280,150 270,145 270,155" fill="#333" />
+  <text x="195" y="140" font-family="Arial" font-size="12" text-anchor="middle">1. Clicks Restaurant</text>
+  
+  <!-- Router navigates to restaurant page -->
+  <line x1="280" y1="180" x2="450" y2="180" stroke="#333" stroke-width="2" />
+  <polygon points="450,180 440,175 440,185" fill="#333" />
+  <text x="365" y="170" font-family="Arial" font-size="12" text-anchor="middle">2. Navigate to /restaurants/:resId</text>
+  
+  <!-- RestaurantMenu mounts -->
+  <rect x="440" y="190" width="20" height="40" fill="#ffe6cc" stroke="#d79b00" stroke-width="1" />
+  <text x="500" y="210" font-family="Arial" font-size="12" text-anchor="start">3. Component Mounts</text>
+  
+  <!-- useEffect runs -->
+  <rect x="440" y="240" width="20" height="40" fill="#ffe6cc" stroke="#d79b00" stroke-width="1" />
+  <text x="500" y="260" font-family="Arial" font-size="12" text-anchor="start">4. useEffect Runs</text>
+  
+  <!-- fetchMenu called -->
+  <rect x="440" y="290" width="20" height="40" fill="#ffe6cc" stroke="#d79b00" stroke-width="1" />
+  <text x="500" y="310" font-family="Arial" font-size="12" text-anchor="start">5. fetchMenu() Called</text>
+  
+  <!-- API Request -->
+  <line x1="450" y1="340" x2="620" y2="340" stroke="#333" stroke-width="2" />
+  <polygon points="620,340 610,335 610,345" fill="#333" />
+  <text x="535" y="330" font-family="Arial" font-size="12" text-anchor="middle">6. Fetch Menu Data</text>
+  
+  <!-- API Processing -->
+  <rect x="610" y="350" width="20" height="40" fill="#fff2cc" stroke="#d6b656" stroke-width="1" />
+  <text x="670" y="370" font-family="Arial" font-size="12" text-anchor="start">7. Process Request</text>
+  
+  <!-- API Response -->
+  <line x1="620" y1="400" x2="450" y2="400" stroke="#333" stroke-width="2" stroke-dasharray="5,5" />
+  <polygon points="450,400 460,395 460,405" fill="#333" />
+  <text x="535" y="390" font-family="Arial" font-size="12" text-anchor="middle">8. Return JSON Data</text>
+  
+  <!-- Update State -->
+  <rect x="440" y="410" width="20" height="40" fill="#ffe6cc" stroke="#d79b00" stroke-width="1" />
+  <text x="500" y="430" font-family="Arial" font-size="12" text-anchor="start">9. setResInfo(json)</text>
+  
+  <!-- Render Content -->
+  <rect x="440" y="460" width="20" height="40" fill="#ffe6cc" stroke="#d79b00" stroke-width="1" />
+  <text x="500" y="480" font-family="Arial" font-size="12" text-anchor="start">10. Render Menu Items</text>
+  
+  <!-- Display to User -->
+  <line x1="450" y1="510" x2="110" y2="510" stroke="#333" stroke-width="2" stroke-dasharray="5,5" />
+  <polygon points="110,510 120,505 120,515" fill="#333" />
+  <text x="280" y="500" font-family="Arial" font-size="12" text-anchor="middle">11. Display Restaurant Menu</text>
+  
+  <!-- Notes -->
+  <rect x="50" y="530" width="700" height="60" rx="5" ry="5" fill="#f5f5f5" stroke="#666" stroke-width="1" />
+  <text x="60" y="550" font-family="Arial" font-size="12">Notes:</text>
+  <text x="60" y="570" font-family="Arial" font-size="12">- If resInfo is null (during initial loading), a Shimmer component is displayed instead of the menu</text>
+  <text x="60" y="585" font-family="Arial" font-size="12">- The component uses optional chaining (?.) to safely access nested properties in the API response</text>
+</svg>

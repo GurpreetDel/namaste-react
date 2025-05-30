@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Restaurant Search and Filter Process</text>
+  
+  <!-- Start -->
+  <rect x="350" y="70" width="100" height="50" rx="20" ry="20" fill="#d4f1f9" stroke="#333" stroke-width="2" />
+  <text x="400" y="100" font-family="Arial" font-size="16" text-anchor="middle">Start</text>
+  
+  <!-- User Enters Search Text -->
+  <rect x="300" y="150" width="200" height="50" rx="10" ry="10" fill="#e6f7ff" stroke="#333" stroke-width="2" />
+  <text x="400" y="180" font-family="Arial" font-size="16" text-anchor="middle">User Enters Search Text</text>
+  
+  <!-- Update searchText State -->
+  <rect x="300" y="230" width="200" height="50" rx="10" ry="10" fill="#ffe6cc" stroke="#333" stroke-width="2" />
+  <text x="400" y="260" font-family="Arial" font-size="16" text-anchor="middle">Update searchText State</text>
+  
+  <!-- User Clicks Search Button -->
+  <rect x="300" y="310" width="200" height="50" rx="10" ry="10" fill="#e6f7ff" stroke="#333" stroke-width="2" />
+  <text x="400" y="340" font-family="Arial" font-size="16" text-anchor="middle">User Clicks Search Button</text>
+  
+  <!-- Filter Restaurants Based on Search -->
+  <rect x="300" y="390" width="200" height="50" rx="10" ry="10" fill="#ffe6cc" stroke="#333" stroke-width="2" />
+  <text x="400" y="420" font-family="Arial" font-size="14" text-anchor="middle">Filter Restaurants Based on Search</text>
+  
+  <!-- Decision: Results Found? -->
+  <polygon points="400,470 450,520 350,520" fill="#d4f1f9" stroke="#333" stroke-width="2" />
+  <text x="400" y="505" font-family="Arial" font-size="14" text-anchor="middle">Results Found?</text>
+  
+  <!-- Display Filtered Restaurants -->
+  <rect x="500" y="495" width="200" height="50" rx="10" ry="10" fill="#d5e8d4" stroke="#333" stroke-width="2" />
+  <text x="600" y="525" font-family="Arial" font-size="14" text-anchor="middle">Display Filtered Restaurants</text>
+  
+  <!-- Display No Results Message -->
+  <rect x="100" y="495" width="200" height="50" rx="10" ry="10" fill="#f8cecc" stroke="#333" stroke-width="2" />
+  <text x="200" y="525" font-family="Arial" font-size="14" text-anchor="middle">Display No Results Message</text>
+  
+  <!-- End -->
+  <rect x="350" y="570" width="100" height="50" rx="20" ry="20" fill="#d4f1f9" stroke="#333" stroke-width="2" />
+  <text x="400" y="600" font-family="Arial" font-size="16" text-anchor="middle">End</text>
+  
+  <!-- Connections -->
+  <!-- Start to User Enters Search Text -->
+  <line x1="400" y1="120" x2="400" y2="150" stroke="#333" stroke-width="2" />
+  <polygon points="400,150 395,140 405,140" fill="#333" />
+  
+  <!-- User Enters Search Text to Update searchText State -->
+  <line x1="400" y1="200" x2="400" y2="230" stroke="#333" stroke-width="2" />
+  <polygon points="400,230 395,220 405,220" fill="#333" />
+  
+  <!-- Update searchText State to User Clicks Search Button -->
+  <line x1="400" y1="280" x2="400" y2="310" stroke="#333" stroke-width="2" />
+  <polygon points="400,310 395,300 405,300" fill="#333" />
+  
+  <!-- User Clicks Search Button to Filter Restaurants Based on Search -->
+  <line x1="400" y1="360" x2="400" y2="390" stroke="#333" stroke-width="2" />
+  <polygon points="400,390 395,380 405,380" fill="#333" />
+  
+  <!-- Filter Restaurants Based on Search to Decision -->
+  <line x1="400" y1="440" x2="400" y2="470" stroke="#333" stroke-width="2" />
+  <polygon points="400,470 395,460 405,460" fill="#333" />
+  
+  <!-- Decision to Display Filtered Restaurants -->
+  <line x1="450" y1="520" x2="500" y2="520" stroke="#333" stroke-width="2" />
+  <polygon points="500,520 490,515 490,525" fill="#333" />
+  <text x="475" y="510" font-family="Arial" font-size="14" text-anchor="middle">Yes</text>
+  
+  <!-- Decision to Display No Results Message -->
+  <line x1="350" y1="520" x2="300" y2="520" stroke="#333" stroke-width="2" />
+  <polygon points="300,520 310,515 310,525" fill="#333" />
+  <text x="325" y="510" font-family="Arial" font-size="14" text-anchor="middle">No</text>
+  
+  <!-- Display Filtered Restaurants to End -->
+  <path d="M 600,545 C 600,560 500,560 400,570" stroke="#333" stroke-width="2" fill="none" />
+  <polygon points="400,570 410,565 410,575" fill="#333" />
+  
+  <!-- Display No Results Message to End -->
+  <path d="M 200,545 C 200,560 300,560 400,570" stroke="#333" stroke-width="2" fill="none" />
+  <polygon points="400,570 390,565 390,575" fill="#333" />
+  
+  <!-- Alternative Path: Top Rated Filter -->
+  <rect x="600" y="150" width="150" height="50" rx="10" ry="10" fill="#e6f7ff" stroke="#333" stroke-width="2" />
+  <text x="675" y="180" font-family="Arial" font-size="14" text-anchor="middle">User Clicks "Top Rated"</text>
+  
+  <rect x="600" y="230" width="150" height="50" rx="10" ry="10" fill="#ffe6cc" stroke="#333" stroke-width="2" />
+  <text x="675" y="260" font-family="Arial" font-size="14" text-anchor="middle">Filter by Rating > 4.5</text>
+  
+  <line x1="675" y1="200" x2="675" y2="230" stroke="#333" stroke-width="2" />
+  <polygon points="675,230 670,220 680,220" fill="#333" />
+  
+  <path d="M 675,280 C 675,350 500,350 400,390" stroke="#333" stroke-width="2" fill="none" />
+  <polygon points="400,390 410,385 410,395" fill="#333" />
+  
+  <!-- Legend -->
+  <rect x="50" y="50" width="20" height="20" fill="#e6f7ff" stroke="#333" stroke-width="1" />
+  <text x="80" y="65" font-family="Arial" font-size="12">User Action</text>
+  
+  <rect x="50" y="80" width="20" height="20" fill="#ffe6cc" stroke="#333" stroke-width="1" />
+  <text x="80" y="95" font-family="Arial" font-size="12">System Process</text>
+  
+  <rect x="50" y="110" width="20" height="20" fill="#d5e8d4" stroke="#333" stroke-width="1" />
+  <text x="80" y="125" font-family="Arial" font-size="12">Positive Outcome</text>
+  
+  <rect x="50" y="140" width="20" height="20" fill="#f8cecc" stroke="#333" stroke-width="1" />
+  <text x="80" y="155" font-family="Arial" font-size="12">Negative Outcome</text>
+</svg>

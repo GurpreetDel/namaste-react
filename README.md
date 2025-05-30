@@ -89,6 +89,21 @@ namaste-react/
    ```
    This will create optimized files in the `dist` directory.
 
+## Comprehensive Documentation
+
+This project includes extensive documentation to help you understand its architecture, components, and workflows. The documentation includes:
+
+- Detailed project overview
+- Component documentation
+- Architecture diagrams
+- Flow diagrams
+- Visual guides
+- Presentations
+- Getting started guides
+- And more!
+
+To access the full documentation, please refer to the [Documentation Index](./docs/documentation_index.md).
+
 ## Project Setup from Scratch
 
 If you want to set up this project from scratch, follow these steps in sequence:
