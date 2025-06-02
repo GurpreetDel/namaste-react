@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="400" viewBox="0 0 800 400">
+  <!-- Styles -->
+  <defs>
+    <style type="text/css">
+      .component { fill: #e1f5fe; stroke: #0288d1; stroke-width: 2; }
+      .props { fill: #fff9c4; stroke: #fbc02d; stroke-width: 2; }
+      .arrow { stroke: #616161; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .label { font-family: Arial; font-size: 14px; fill: #424242; }
+      .title { font-family: Arial; font-size: 16px; font-weight: bold; fill: #212121; }
+      .code { font-family: 'Courier New'; font-size: 12px; fill: #212121; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#616161" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title" style="font-size: 24px;">React Props Flow</text>
+  
+  <!-- Parent Component -->
+  <rect x="300" y="70" width="200" height="80" rx="5" ry="5" class="component" />
+  <text x="400" y="100" text-anchor="middle" class="title">Parent Component</text>
+  <text x="400" y="130" text-anchor="middle" class="code">&lt;User name="Akshay" /&gt;</text>
+  
+  <!-- Props Object -->
+  <rect x="150" y="200" width="150" height="80" rx="5" ry="5" class="props" />
+  <text x="225" y="230" text-anchor="middle" class="title">Props Object</text>
+  <text x="225" y="260" text-anchor="middle" class="code">{ name: "Akshay" }</text>
+  
+  <!-- Child Component -->
+  <rect x="500" y="200" width="200" height="80" rx="5" ry="5" class="component" />
+  <text x="600" y="230" text-anchor="middle" class="title">Child Component</text>
+  <text x="600" y="260" text-anchor="middle" class="code">const User = (props) => {...}</text>
+  
+  <!-- Rendered Output -->
+  <rect x="300" y="320" width="200" height="60" rx="5" ry="5" fill="#e8f5e9" stroke="#388e3c" stroke-width="2" />
+  <text x="400" y="350" text-anchor="middle" class="title">Rendered Output</text>
+  <text x="400" y="370" text-anchor="middle" class="code">Name: Akshay</text>
+  
+  <!-- Arrows -->
+  <path d="M 400 150 L 400 170 L 225 170 L 225 200" class="arrow" />
+  <text x="300" y="165" text-anchor="middle" class="label">Creates</text>
+  
+  <path d="M 400 150 L 400 170 L 600 170 L 600 200" class="arrow" />
+  <text x="500" y="165" text-anchor="middle" class="label">Renders</text>
+  
+  <path d="M 300 200 L 500 200" class="arrow" />
+  <text x="400" y="190" text-anchor="middle" class="label">Passed to</text>
+  
+  <path d="M 600 280 L 600 300 L 400 300 L 400 320" class="arrow" />
+  <text x="500" y="295" text-anchor="middle" class="label">Produces</text>
+  
+  <!-- Key Points -->
+  <text x="50" y="100" class="label" style="font-weight: bold;">Key Points:</text>
+  <text x="50" y="130" class="label">1. Props flow down from parent to child</text>
+  <text x="50" y="150" class="label">2. Props are read-only in the child</text>
+  <text x="50" y="170" class="label">3. Props can be any JavaScript value</text>
+  <text x="50" y="190" class="label">4. Changes to props come from the parent</text>
+</svg>
