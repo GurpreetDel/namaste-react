@@ -21,6 +21,7 @@ This document serves as an index to all the documentation available for the Nama
 - [Utilities Documentation](./detailed_modules/utils_documentation.md) - Detailed information about the utility modules in the application
 - [Component Documentation](./detailed_modules/component_documentation.md) - Additional documentation for components
 - [Understanding Props](./understanding_props.md) - In-depth guide to React props with examples and interview questions
+- [Class Components Props Issue](./class_components_props_issue.md) - Explanation of common issues with props in class components and how to fix them
 
 ## Presentations
 
