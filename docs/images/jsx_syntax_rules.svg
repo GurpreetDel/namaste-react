@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Styles -->
+  <defs>
+    <style type="text/css">
+      .correct { fill: #e8f5e9; stroke: #388e3c; stroke-width: 2; }
+      .incorrect { fill: #ffebee; stroke: #d32f2f; stroke-width: 2; }
+      .rule { fill: #e1f5fe; stroke: #0288d1; stroke-width: 2; }
+      .code { font-family: 'Courier New'; font-size: 14px; fill: #212121; }
+      .title { font-family: Arial; font-size: 16px; font-weight: bold; fill: #212121; }
+      .label { font-family: Arial; font-size: 14px; fill: #424242; }
+      .check { fill: #4caf50; font-size: 20px; font-weight: bold; }
+      .cross { fill: #f44336; font-size: 20px; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title" style="font-size: 24px;">JSX Syntax Rules</text>
+  
+  <!-- Rule 1: All tags must be closed -->
+  <rect x="50" y="60" width="700" height="100" rx="5" ry="5" class="rule" />
+  <text x="400" y="80" text-anchor="middle" class="title">Rule 1: All tags must be closed</text>
+  
+  <!-- Incorrect Example -->
+  <rect x="80" y="100" width="300" height="40" rx="5" ry="5" class="incorrect" />
+  <text x="100" y="125" class="code">&#x3C;button onClick={handleClick}>Click Me</text>
+  <text x="60" y="125" text-anchor="end" class="cross">✗</text>
+  
+  <!-- Correct Example -->
+  <rect x="420" y="100" width="300" height="40" rx="5" ry="5" class="correct" />
+  <text x="440" y="125" class="code">&#x3C;button onClick={handleClick}>Click Me&#x3C;/button></text>
+  <text x="400" y="125" text-anchor="end" class="check">✓</text>
+  
+  <!-- Rule 2: Use camelCase for attributes -->
+  <rect x="50" y="180" width="700" height="100" rx="5" ry="5" class="rule" />
+  <text x="400" y="200" text-anchor="middle" class="title">Rule 2: Use camelCase for attributes</text>
+  
+  <!-- Incorrect Example -->
+  <rect x="80" y="220" width="300" height="40" rx="5" ry="5" class="incorrect" />
+  <text x="100" y="245" class="code">&#x3C;button onclick="handleClick()">Click Me&#x3C;/button></text>
+  <text x="60" y="245" text-anchor="end" class="cross">✗</text>
+  
+  <!-- Correct Example -->
+  <rect x="420" y="220" width="300" height="40" rx="5" ry="5" class="correct" />
+  <text x="440" y="245" class="code">&#x3C;button onClick={handleClick}>Click Me&#x3C;/button></text>
+  <text x="400" y="245" text-anchor="end" class="check">✓</text>
+  
+  <!-- Rule 3: JavaScript expressions in curly braces -->
+  <rect x="50" y="300" width="700" height="100" rx="5" ry="5" class="rule" />
+  <text x="400" y="320" text-anchor="middle" class="title">Rule 3: JavaScript expressions in curly braces</text>
+  
+  <!-- Incorrect Example -->
+  <rect x="80" y="340" width="300" height="40" rx="5" ry="5" class="incorrect" />
+  <text x="100" y="365" class="code">&#x3C;h2>Count: &#x3C;button value="{count+1}">+&#x3C;/button>&#x3C;/h2></text>
+  <text x="60" y="365" text-anchor="end" class="cross">✗</text>
+  
+  <!-- Correct Example -->
+  <rect x="420" y="340" width="300" height="40" rx="5" ry="5" class="correct" />
+  <text x="440" y="365" class="code">&#x3C;h2>Count: {count} &#x3C;button onClick={handleClick}>+&#x3C;/button>&#x3C;/h2></text>
+  <text x="400" y="365" text-anchor="end" class="check">✓</text>
+  
+  <!-- Rule 4: Pass function references, not calls -->
+  <rect x="50" y="420" width="700" height="100" rx="5" ry="5" class="rule" />
+  <text x="400" y="440" text-anchor="middle" class="title">Rule 4: Pass function references, not calls</text>
+  
+  <!-- Incorrect Example -->
+  <rect x="80" y="460" width="300" height="40" rx="5" ry="5" class="incorrect" />
+  <text x="100" y="485" class="code">&#x3C;button onClick={handleClick()}>Click Me&#x3C;/button></text>
+  <text x="60" y="485" text-anchor="end" class="cross">✗</text>
+  
+  <!-- Correct Example -->
+  <rect x="420" y="460" width="300" height="40" rx="5" ry="5" class="correct" />
+  <text x="440" y="485" class="code">&#x3C;button onClick={handleClick}>Click Me&#x3C;/button></text>
+  <text x="400" y="485" text-anchor="end" class="check">✓</text>
+  
+  <!-- Rule 5: Single root element -->
+  <rect x="50" y="540" width="700" height="100" rx="5" ry="5" class="rule" />
+  <text x="400" y="560" text-anchor="middle" class="title">Rule 5: Components must return a single root element</text>
+  
+  <!-- Incorrect Example -->
+  <rect x="80" y="580" width="300" height="40" rx="5" ry="5" class="incorrect" />
+  <text x="100" y="595" class="code">return (</text>
+  <text x="100" y="615" class="code">  &#x3C;h1>Title&#x3C;/h1></text>
+  <text x="100" y="635" class="code">  &#x3C;p>Paragraph&#x3C;/p></text>
+  <text x="100" y="655" class="code">);</text>
+  <text x="60" y="615" text-anchor="end" class="cross">✗</text>
+  
+  <!-- Correct Example -->
+  <rect x="420" y="580" width="300" height="40" rx="5" ry="5" class="correct" />
+  <text x="440" y="595" class="code">return (</text>
+  <text x="440" y="615" class="code">  &#x3C;div></text>
+  <text x="440" y="635" class="code">    &#x3C;h1>Title&#x3C;/h1></text>
+  <text x="440" y="655" class="code">    &#x3C;p>Paragraph&#x3C;/p></text>
+  <text x="440" y="675" class="code">  &#x3C;/div></text>
+  <text x="440" y="695" class="code">);</text>
+  <text x="400" y="635" text-anchor="end" class="check">✓</text>
+</svg>

@@ -22,6 +22,8 @@ This document serves as an index to all the documentation available for the Nama
 - [Component Documentation](./detailed_modules/component_documentation.md) - Additional documentation for components
 - [Understanding Props](./understanding_props.md) - In-depth guide to React props with examples and interview questions
 - [Class Components Props Issue](./class_components_props_issue.md) - Explanation of common issues with props in class components and how to fix them
+- [Understanding User Component](./detailed_modules/understanding_user_component.md) - In-depth explanation of the User component issues and React best practices
+- [Understanding super(props)](./understanding_super_props.md) - In-depth explanation of why we use super(props) in React class components
 
 ## Presentations
 

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="500" viewBox="0 0 800 500">
+  <!-- Styles -->
+  <defs>
+    <style type="text/css">
+      .component { fill: #e1f5fe; stroke: #0288d1; stroke-width: 2; }
+      .state { fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; }
+      .render { fill: #e8f5e9; stroke: #388e3c; stroke-width: 2; }
+      .update { fill: #fff9c4; stroke: #fbc02d; stroke-width: 2; }
+      .arrow { stroke: #616161; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 5,5; }
+      .label { font-family: Arial; font-size: 14px; fill: #424242; }
+      .title { font-family: Arial; font-size: 16px; font-weight: bold; fill: #212121; }
+      .code { font-family: 'Courier New'; font-size: 12px; fill: #212121; }
+      .phase { font-family: Arial; font-size: 18px; font-weight: bold; fill: #212121; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#616161" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title" style="font-size: 24px;">useState Hook Lifecycle</text>
+  
+  <!-- Initial Render Phase -->
+  <text x="150" y="70" text-anchor="middle" class="phase">Initial Render</text>
+  
+  <!-- Component First Render -->
+  <rect x="50" y="90" width="200" height="80" rx="5" ry="5" class="component" />
+  <text x="150" y="120" text-anchor="middle" class="title">Component Function</text>
+  <text x="150" y="140" text-anchor="middle" class="code">const User = (props) => {</text>
+  <text x="150" y="160" text-anchor="middle" class="code">  // First execution</text>
+  
+  <!-- useState Declaration -->
+  <rect x="50" y="200" width="200" height="80" rx="5" ry="5" class="state" />
+  <text x="150" y="230" text-anchor="middle" class="title">useState Hook</text>
+  <text x="150" y="250" text-anchor="middle" class="code">const [count, setCount] =</text>
+  <text x="150" y="270" text-anchor="middle" class="code">  useState(0);</text>
+  
+  <!-- Initial Render -->
+  <rect x="50" y="310" width="200" height="80" rx="5" ry="5" class="render" />
+  <text x="150" y="340" text-anchor="middle" class="title">Initial Render</text>
+  <text x="150" y="360" text-anchor="middle" class="code">return (</text>
+  <text x="150" y="380" text-anchor="middle" class="code">  // JSX with count = 0</text>
+  
+  <!-- Update Phase -->
+  <text x="550" y="70" text-anchor="middle" class="phase">Update Phase</text>
+  
+  <!-- State Update -->
+  <rect x="450" y="90" width="200" height="80" rx="5" ry="5" class="update" />
+  <text x="550" y="120" text-anchor="middle" class="title">State Update</text>
+  <text x="550" y="140" text-anchor="middle" class="code">setCount(count + 1);</text>
+  <text x="550" y="160" text-anchor="middle" class="code">// Triggers re-render</text>
+  
+  <!-- Component Re-render -->
+  <rect x="450" y="200" width="200" height="80" rx="5" ry="5" class="component" />
+  <text x="550" y="230" text-anchor="middle" class="title">Component Function</text>
+  <text x="550" y="250" text-anchor="middle" class="code">const User = (props) => {</text>
+  <text x="550" y="270" text-anchor="middle" class="code">  // Re-execution</text>
+  
+  <!-- useState Retrieval -->
+  <rect x="450" y="310" width="200" height="80" rx="5" ry="5" class="state" />
+  <text x="550" y="340" text-anchor="middle" class="title">useState Hook</text>
+  <text x="550" y="360" text-anchor="middle" class="code">const [count, setCount] =</text>
+  <text x="550" y="380" text-anchor="middle" class="code">  useState(0); // Returns 1</text>
+  
+  <!-- Updated Render -->
+  <rect x="450" y="420" width="200" height="80" rx="5" ry="5" class="render" />
+  <text x="550" y="450" text-anchor="middle" class="title">Updated Render</text>
+  <text x="550" y="470" text-anchor="middle" class="code">return (</text>
+  <text x="550" y="490" text-anchor="middle" class="code">  // JSX with count = 1</text>
+  
+  <!-- React's State Storage -->
+  <rect x="250" y="200" width="200" height="80" rx="5" ry="5" fill="#ffebee" stroke="#d32f2f" stroke-width="2" />
+  <text x="350" y="230" text-anchor="middle" class="title">React's State Storage</text>
+  <text x="350" y="250" text-anchor="middle" class="code">Component ID: User</text>
+  <text x="350" y="270" text-anchor="middle" class="code">State: [0] → [1]</text>
+  
+  <!-- Arrows for Initial Render -->
+  <path d="M 150 170 L 150 200" class="arrow" />
+  <path d="M 150 280 L 150 310" class="arrow" />
+  
+  <!-- Arrows for State Storage -->
+  <path d="M 250 240 L 200 240" class="arrow dashed" />
+  <text x="225" y="230" text-anchor="middle" class="label">Stores</text>
+  
+  <path d="M 450 350 L 400 350 L 400 280 L 350 280" class="arrow dashed" />
+  <text x="400" y="320" text-anchor="middle" class="label">Retrieves</text>
+  
+  <!-- Arrows for Update Phase -->
+  <path d="M 550 170 L 550 200" class="arrow" />
+  <path d="M 550 280 L 550 310" class="arrow" />
+  <path d="M 550 390 L 550 420" class="arrow" />
+  
+  <!-- Connection between phases -->
+  <path d="M 250 350 L 350 350 L 350 130 L 450 130" class="arrow" />
+  <text x="350" y="110" text-anchor="middle" class="label">Event triggers update</text>
+</svg>

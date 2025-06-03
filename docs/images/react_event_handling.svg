@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="400" viewBox="0 0 800 400">
+  <!-- Styles -->
+  <defs>
+    <style type="text/css">
+      .component { fill: #e1f5fe; stroke: #0288d1; stroke-width: 2; }
+      .event { fill: #fff9c4; stroke: #fbc02d; stroke-width: 2; }
+      .handler { fill: #e8f5e9; stroke: #388e3c; stroke-width: 2; }
+      .state { fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; }
+      .arrow { stroke: #616161; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .label { font-family: Arial; font-size: 14px; fill: #424242; }
+      .title { font-family: Arial; font-size: 16px; font-weight: bold; fill: #212121; }
+      .code { font-family: 'Courier New'; font-size: 12px; fill: #212121; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#616161" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title" style="font-size: 24px;">React Event Handling Flow</text>
+  
+  <!-- User Component -->
+  <rect x="50" y="70" width="700" height="100" rx="5" ry="5" class="component" />
+  <text x="400" y="100" text-anchor="middle" class="title">User Component</text>
+  <text x="400" y="130" text-anchor="middle" class="code">const [count, setCount] = useState(0);</text>
+  <text x="400" y="150" text-anchor="middle" class="code">const handleIncrement = () => setCount(count + 1);</text>
+  
+  <!-- Button Element -->
+  <rect x="300" y="200" width="200" height="50" rx="5" ry="5" class="event" />
+  <text x="400" y="230" text-anchor="middle" class="title">Button Element</text>
+  <text x="400" y="250" text-anchor="middle" class="code">onClick={handleIncrement}</text>
+  
+  <!-- Event Handler -->
+  <rect x="100" y="300" width="200" height="50" rx="5" ry="5" class="handler" />
+  <text x="200" y="330" text-anchor="middle" class="title">Event Handler</text>
+  <text x="200" y="350" text-anchor="middle" class="code">handleIncrement()</text>
+  
+  <!-- State Update -->
+  <rect x="500" y="300" width="200" height="50" rx="5" ry="5" class="state" />
+  <text x="600" y="330" text-anchor="middle" class="title">State Update</text>
+  <text x="600" y="350" text-anchor="middle" class="code">setCount(count + 1)</text>
+  
+  <!-- Arrows -->
+  <!-- Component to Button -->
+  <path d="M 400 170 L 400 200" class="arrow" />
+  <text x="420" y="190" text-anchor="start" class="label">Renders</text>
+  
+  <!-- Button to Event Handler -->
+  <path d="M 300 225 L 250 225 L 250 275 L 200 275 L 200 300" class="arrow" />
+  <text x="220" y="270" text-anchor="middle" class="label">1. User clicks</text>
+  
+  <!-- Event Handler to State Update -->
+  <path d="M 300 325 L 500 325" class="arrow" />
+  <text x="400" y="315" text-anchor="middle" class="label">2. Calls state setter</text>
+  
+  <!-- State Update back to Component -->
+  <path d="M 600 300 L 600 120 L 500 120" class="arrow" />
+  <text x="580" y="200" text-anchor="middle" class="label">3. Triggers re-render</text>
+  
+  <!-- Key Points -->
+  <text x="50" y="380" class="label" style="font-weight: bold;">Key Points:</text>
+  <text x="50" y="400" class="label">1. React uses synthetic events that work consistently across browsers</text>
+  <text x="400" y="400" class="label">2. Event handlers are passed as references, not called directly in JSX</text>
+</svg>
