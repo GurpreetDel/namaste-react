@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import Header from './components/Header';
 import Body from "./components/Body";
@@ -9,7 +9,6 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Grocery from "./components/Grocery";
 
 // Wait for DOM to be fully loaded before rendering React components
 document.addEventListener('DOMContentLoaded', function() {
@@ -1913,6 +1912,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // AppLayout component - The main application layout
     // This component demonstrates component composition by including Header and Body components
+
+    const Grocery = lazy(() => import("./components/Grocery"));
     const AppLayout = () => {
         return (
             <div className="app">
@@ -1947,7 +1948,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 {
                     path:"/grocery",
-                    element:<Grocery/>
+                    element: (
+                        <Suspense fallback={<h1>Loading Grocery Store...</h1>}>
+                            <Grocery/>
+                        </Suspense>
+                    )
                 }
             ],
             errorElement: <Error/>
