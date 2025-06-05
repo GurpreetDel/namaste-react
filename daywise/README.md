@@ -1,31 +1,46 @@
-# Daywise Learning Documentation
+# Namaste React Project - Development Journal
 
-This folder contains day-by-day documentation of what we've learned during the Namaste React course and how we've resolved various problems encountered along the way.
+This directory contains documentation of issues encountered during the development of the Namaste React project, along with their solutions and lessons learned.
 
-## Structure
+## Project Overview
 
-Each day has its own folder with the naming convention `day-DD-month-YYYY` (e.g., `day-05-june-2025`). Inside each day's folder, you'll find:
+The Namaste React project is a food delivery application built using React. It allows users to browse restaurants, view their menus, and place orders.
 
-- A `README.md` file documenting:
-  - What we learned that day
-  - Problems encountered and their solutions
-  - Code examples and explanations
+## Directory Structure
 
-## Purpose
+- **day-05-june-2025**: Contains documentation for issues encountered and resolved on June 5, 2025.
+- **problems-encountered**: Contains technical analysis of specific issues encountered during development.
 
-This documentation serves several purposes:
+## Recent Issues
 
-1. **Track Progress**: Keep a record of our learning journey through the React course
-2. **Problem-Solving Reference**: Document solutions to problems for future reference
-3. **Knowledge Sharing**: Share insights and learnings with team members
-4. **Learning Reinforcement**: Reinforce learning by documenting concepts in our own words
+### June 5, 2025: Restaurant Menu Display Issue
 
-## How to Use
+**Problem**: When clicking on a restaurant card, the restaurant details and menu were not displaying.
 
-1. Navigate to the specific day you're interested in
-2. Read the README.md file to understand what was learned and what problems were solved
-3. Use the code examples and explanations to help with similar issues you might encounter
+**Solution**: Fixed the dependency array in the useEffect hook and implemented more flexible data access patterns to handle different API response structures.
 
-## Days Covered
+**Documentation**:
+- [Day 5 June 2025 README](./day-05-june-2025/README.md): Comprehensive explanation of the issues and solutions.
+- [Restaurant Menu Not Displaying - Technical Analysis](./problems-encountered/RestaurantMenu-NotDisplaying.md): Detailed technical analysis of the issue.
 
-- [Day 5 - June 2025: Custom React Hooks](./day-05-june-2025/README.md)
+## Best Practices Learned
+
+1. **React Hooks Best Practices**:
+   - Always include all dependencies in the useEffect dependency array.
+   - Be mindful of the dependency array to avoid infinite loops or stale data.
+
+2. **API Data Handling**:
+   - Implement flexible data access patterns to handle different API response structures.
+   - Provide fallbacks for missing data to ensure a good user experience.
+   - Add comprehensive logging to help debug issues.
+
+3. **Error Handling**:
+   - Implement robust error handling to gracefully handle unexpected situations.
+   - Use conditional rendering to handle undefined or null values.
+   - Provide meaningful feedback to users when data is unavailable.
+
+## Future Improvements
+
+1. **API Response Normalization**: Implement a normalization layer that converts the API response into a consistent format.
+2. **Error Boundary Implementation**: Add React Error Boundaries to catch and handle errors gracefully at the component level.
+3. **Unit Tests**: Add unit tests to verify that components handle different API response structures correctly.
