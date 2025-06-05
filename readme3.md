@@ -112,3 +112,6 @@ const RestaurantMenu = () => {
    - Having multiple versions of React in the same application
 
 By following these rules, you can avoid similar errors in the future.
+
+"+1"
+"🥇"

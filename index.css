@@ -562,3 +562,10 @@
     margin: 0;
     font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
 }
+
+/* Styling for the Grocery component */
+.grocery-container {
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
