@@ -1,162 +1,128 @@
 import React from "react";
-import {CDN_URL} from "../utils/constants";
-import {LOGO_URL} from "../utils/constants";
+import { Link } from "react-router-dom";
 
-const styleCard =
-    {
-        // Removed background color to use the white background from CSS
+const RestaurantCard = ({ resData }) => {
+    const { info } = resData || {};
+
+    const {
+        id,
+        cloudinaryImageId,
+        name = "Restaurant Name",
+        cuisines = [],
+        avgRatingString = "4.0",
+        sla = {},
+        costForTwo = "₹300 for two",
+        aggregatedDiscountInfoV3
+    } = info || {};
+
+    const imageUrl = cloudinaryImageId
+        ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`
+        : "https://via.placeholder.com/300x200/f0f0f0/666666?text=No+Image";
+
+    const deliveryTime = sla?.slaString || "30-40 mins";
+    const rating = parseFloat(avgRatingString) || 4.0;
+
+    // Determine rating color based on value
+    const getRatingColor = (rating) => {
+        if (rating >= 4.0) return "bg-green-500";
+        if (rating >= 3.5) return "bg-yellow-500";
+        return "bg-red-500";
     };
 
-const RestaurantCard = (props) => {
-    // Console log the props object to see what's being passed
-    console.log("RestaurantCard props:", props);
-    const { resData } = props;
+    const discountText = aggregatedDiscountInfoV3
+        ? `${aggregatedDiscountInfoV3.header} ${aggregatedDiscountInfoV3.subHeader || ''}`.trim()
+        : "Special offers available";
 
     return (
-        <div className="res-card" style={styleCard}>
-            {/*
-                  Inline style defined directly in the JSX
-                  Note how we use double curly braces: {{ }}
-                  - The outer braces are for embedding JavaScript in JSX
-                  - The inner braces define the object literal
-                */}
-            <img
-                src={resData && resData.info && resData.info.cloudinaryImageId
-                    ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${resData.info.cloudinaryImageId}`
-                    : "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/x4uyxvihmg8qa3pddkgf"
+        <Link
+            to={{
+                pathname: `/restaurants/${id}`,
+                state: {
+                    restaurantImage: imageUrl,
+                    restaurantData: info
                 }
-                style={{
-                    width: "100%",
-                    height: "280px",
-                    objectFit: "cover",
-                    display: "block",
-                    margin: 0,
-                    padding: 0,
-                    borderRadius: "16px 16px 0 0"
-                }}
-                alt={resData && resData.info ? resData.info.name : "Restaurant image"}
-            />
-            {/* Using props.resName instead of hardcoded value */}
-            <div style={{
-                height: "54px", // Fixed height for name and cuisine container (24px + 20px + margins)
-                padding: "0",
-                margin: "0",
-                overflow: "hidden" // Ensure nothing overflows
-            }}>
-                <h3 style={{
-                    margin: "6px 12px 2px 12px",
-                    fontSize: "18px",
-                    fontWeight: "600",
-                    color: "#3e4152",
-                    lineHeight: "24px",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap", // Changed from "normal" to "nowrap" to prevent wrapping
-                    height: "24px", // Changed from minHeight to fixed height
-                    /*}}>{props.resName || "Restaurant Name"}</h3>*/
-                }}>{resData && resData.info ? resData.info.name : "Restaurant Name"}</h3>
-                {/* Using props.cuisine instead of hardcoded value */}
-                <h4 style={{
-                    fontSize: "14px",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    margin: "0 12px 4px 12px",
-                    color: "#686b78",
-                    fontWeight: "400",
-                    height: "20px",
-                    lineHeight: "20px"
-                }}>{resData && resData.info && resData.info.cuisines ? resData.info.cuisines.join(", ") : props.cuisine || "Various Cuisines"}</h4>
-            </div>
-            <div style={{
-                borderTop: "1px solid #e9e9eb",
-                paddingTop: "8px",
-                margin: "8px 12px 0 12px",
-                height: "70px", // Further increased fixed height for the metadata section
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between"
-            }}>
-                <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    marginBottom: "8px", // Increased from 6px to 8px
-                    height: "24px", // Increased from 20px to 24px for better visibility
-                    width: "100%" // Ensure full width
-                }}>
-                    <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        maxWidth: "60%" // Limit width to prevent overlap
-                    }}>
-                            <span style={{
-                                backgroundColor: "#48c479",
-                                color: "white",
-                                padding: "0 5px",
-                                borderRadius: "4px",
-                                fontSize: "12px",
-                                fontWeight: "600",
-                                marginRight: "8px",
-                                height: "20px",
-                                display: "flex",
-                                alignItems: "center",
-                                flexShrink: 0 // Prevent shrinking
-                            }}>{resData && resData.info ? resData.info.avgRatingString : props.rating || "4.4"} ★</span>
-                        <h4 style={{
-                            fontSize: "12px",
-                            margin: "0",
-                            color: "#686b78",
-                            fontWeight: "400",
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            maxWidth: "100%" // Use maximum available width
-                        }}>{resData && resData.info && resData.info.sla ? resData.info.sla.slaString : props.deliveryTime || "38 minutes"}</h4>
-                    </div>
-                    <h4 style={{
-                        fontSize: "12px",
-                        margin: "0",
-                        color: "#686b78",
-                        fontWeight: "600", // Increased from 400 to 600 for better visibility
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        maxWidth: "40%", // Limit width to prevent overlap
-                        textAlign: "right" // Align to the right
-                    }}>{resData && resData.info ? resData.info.costForTwo : props.price || "₹200 for two"}</h4>
-                </div>
-                <div style={{
-                    color: "#8a584b",
-                    fontSize: "11px",
-                    fontWeight: "600",
-                    display: "flex",
-                    alignItems: "center",
-                    height: "24px", // Increased from 20px to 24px for better visibility
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
-                    width: "100%", // Ensure full width
-                    marginTop: "4px" // Add some space from the elements above
-                }}>
+            }}
+            className="block"
+        >
+            <div className="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-all duration-300 group">
+                {/* Image Section */}
+                <div className="relative overflow-hidden">
                     <img
-                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_18,h_18/v1634558776/swiggy_one/OneIcon_3x.png"
-                        alt="Swiggy One"
-                        style={{ width: "18px", height: "18px", marginRight: "4px", flexShrink: 0 }}
+                        src={imageUrl}
+                        alt={name}
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
                     />
-                    <span style={{ 
-                        overflow: "hidden", 
-                        textOverflow: "ellipsis", 
-                        whiteSpace: "nowrap",
-                        width: "100%" // Use full available width
-                    }}>
-                        {resData && resData.info && resData.info.aggregatedDiscountInfoV3 
-                            ? `${resData.info.aggregatedDiscountInfoV3.header} ${resData.info.aggregatedDiscountInfoV3.subHeader}`
-                            : "50% off up to ₹100"}
-                    </span>
+
+                    {/* Discount Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                        <div className="text-white text-sm font-semibold flex items-center space-x-1">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
+                            </svg>
+                            <span className="text-ellipsis">{discountText}</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="p-4 space-y-3">
+                    {/* Restaurant Name */}
+                    <h3 className="text-lg font-semibold text-textPrimary text-ellipsis leading-tight">
+                        {name}
+                    </h3>
+
+                    {/* Cuisines */}
+                    <p className="text-sm text-textSecondary text-ellipsis">
+                        {cuisines.length > 0 ? cuisines.join(", ") : "Various Cuisines"}
+                    </p>
+
+                    {/* Rating, Time, and Cost Row */}
+                    <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center space-x-3">
+                            {/* Rating */}
+                            <div className="flex items-center space-x-1">
+                                <div className={`${getRatingColor(rating)} text-white px-2 py-1 rounded-md flex items-center space-x-1`}>
+                                    <span className="font-semibold">{avgRatingString}</span>
+                                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2L15.09 8.26L22 9L17 14.74L18.18 22L12 18.27L5.82 22L7 14.74L2 9L8.91 8.26L12 2Z"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            {/* Delivery Time */}
+                            <div className="flex items-center space-x-1 text-textSecondary">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>{deliveryTime}</span>
+                            </div>
+                        </div>
+
+                        {/* Cost for Two */}
+                        <div className="text-textSecondary font-medium">
+                            {costForTwo}
+                        </div>
+                    </div>
+
+                    {/* Quick Actions */}
+                    <div className="pt-2 border-t border-gray-100">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-1 text-xs text-textSecondary">
+                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>Fast Delivery</span>
+                            </div>
+
+                            <button className="text-primary hover:text-orange-600 text-xs font-medium transition-colors">
+                                View Menu →
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

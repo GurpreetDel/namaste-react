@@ -1,119 +1,199 @@
+import React, { useState } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
 import Shimmer from "./Shimmer";
-import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
     const { resId } = useParams();
-    console.log(resId);
-
-    // Using the custom hook to fetch restaurant menu data
+    const location = useLocation();
     const resInfo = useRestaurantMenu(resId);
 
-    // Show shimmer UI while data is loading
+    // Get restaurant image from location state or use fallback
+    const restaurantImage = location.state?.restaurantImage;
+    const [showIndex, setShowIndex] = useState(null);
+
     if (resInfo === null) return <Shimmer />;
 
-    //const { name , cuisines , costForTwoMessage } = resInfo?.data.cards[0].card.card.info;
-
-    // Log the entire resInfo object to debug
-    console.log("Restaurant Info:", resInfo);
-
-    // Check different possible paths for restaurant info
-    const restaurantInfo = 
-        resInfo?.data?.cards[0]?.card?.card?.info || 
-        resInfo?.data?.cards[2]?.card?.card?.info || 
+    // Extract restaurant information
+    const restaurantInfo =
+        resInfo?.data?.cards[0]?.card?.card?.info ||
+        resInfo?.data?.cards[2]?.card?.card?.info ||
         {};
 
-    // Check for restaurant name in the new API structure
-    const restaurantName = 
-        resInfo?.cards?.[0]?.card?.card?.text || 
-        restaurantInfo?.name || 
+    const restaurantName =
+        resInfo?.cards?.[0]?.card?.card?.text ||
+        restaurantInfo?.name ||
         "Restaurant Name Not Available";
 
-    // Check for restaurant details in the new API structure
-    const restaurantDetails = resInfo?.cards?.find(card => 
-        card?.card?.card?.["@type"]?.includes("RestaurantInfo")
-    )?.card?.card || {};
+    const {
+        name = restaurantName,
+        cuisines = [],
+        costForTwoMessage,
+        avgRating,
+        areaName,
+        sla,
+        cloudinaryImageId
+    } = restaurantInfo;
 
-    console.log("Restaurant Name:", restaurantName);
-    console.log("Restaurant Details:", restaurantDetails);
+    // Get final restaurant image URL
+    const finalRestaurantImage = restaurantImage ||
+        (cloudinaryImageId ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}` : null);
 
-    // Properly destructuring the required properties
-    const { name = restaurantName, cuisines = [], costForTwoMessage } = restaurantInfo;
-
-    // Check different possible paths for menu items in both old and new API structures
+    // Extract menu items
     const menuItemsPath1 = resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
     const menuItemsPath2 = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-    const menuItemsPath3 = resInfo?.cards?.find(card => 
+    const menuItemsPath3 = resInfo?.cards?.find(card =>
         card?.groupedCard?.cardGroupMap?.REGULAR?.cards
     )?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
-    console.log("Menu Items Path 1:", menuItemsPath1);
-    console.log("Menu Items Path 2:", menuItemsPath2);
-    console.log("Menu Items Path 3:", menuItemsPath3);
-
-    // Find the menu items card by looking for a card with itemCards
     const menuCards = menuItemsPath3 || menuItemsPath1 || menuItemsPath2 || [];
-    const menuCard = menuCards.find(card => 
-        card?.card?.card?.itemCards || 
-        card?.card?.card?.categories?.[0]?.itemCards ||
-        card?.card?.card?.carousel
-    );
 
-    console.log("Menu Card:", menuCard);
+    // Filter for all accordion-worthy categories
+    const categories = menuCards.filter(card => {
+        const cardType = card?.card?.card?.["@type"];
+        return (
+            cardType === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
+            cardType === "type.googleapis.com/swiggy.presentation.food.v2.MenuCarousel" ||
+            cardType === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+        );
+    });
 
-    // Get item cards from the menu card
-    let itemCards = [];
+    console.log("All Categories for Accordion", categories);
 
-    if (menuCard?.card?.card?.itemCards) {
-        itemCards = menuCard.card.card.itemCards;
-    } else if (menuCard?.card?.card?.categories?.[0]?.itemCards) {
-        itemCards = menuCard.card.card.categories[0].itemCards;
-    } else if (menuCard?.card?.card?.carousel) {
-        itemCards = menuCard.card.card.carousel;
-    }
-
-    console.log("Item Cards:", itemCards);
-
-    // We don't need to check for null again since we have an early return above
     return (
-        <div className="menu">
-            <h1>Restaurant Details</h1>
-            <h2>{restaurantName}</h2>
+        <div className="min-h-screen bg-gray-50">
+            {/* Restaurant Header */}
+            <div className="bg-white">
+                <div className="max-w-6xl mx-auto px-6 py-8">
+                    {/* Back Button */}
+                    <div className="mb-6">
+                        <Link
+                            to="/"
+                            className="inline-flex items-center text-gray-500 hover:text-gray-700 transition-colors text-sm font-medium"
+                        >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Back to Restaurants
+                        </Link>
+                    </div>
 
-            {/* Display restaurant details from either structure */}
-            {cuisines.length > 0 && <p>Cuisines: {cuisines.join(", ")}</p>}
-            {costForTwoMessage && <h3>{costForTwoMessage}</h3>}
-            {restaurantDetails.avgRating && <p>Rating: {restaurantDetails.avgRating}⭐</p>}
-            {restaurantDetails.areaName && <p>Area: {restaurantDetails.areaName}</p>}
-            {restaurantDetails.sla?.deliveryTime && <p>Delivery Time: {restaurantDetails.sla.deliveryTime} minutes</p>}
+                    {/* Restaurant Info Card */}
+                    <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-3xl p-8 shadow-sm border border-orange-200">
+                        <div className="flex justify-between items-start">
+                            <div className="flex-1">
+                                {/* Restaurant Name */}
+                                <h1 className="text-3xl font-bold text-gray-900 mb-3">{name}</h1>
 
-            <h2>Menu</h2>
-            {itemCards.length > 0 ? (
-                <ul className="menu-list">
-                    {itemCards.map((item, index) => {
-                        // Handle different item structures
-                        const itemInfo = item?.card?.info || item?.dish?.info || item;
-                        return (
-                            <li key={itemInfo?.id || index} className="menu-item">
-                                <div className="item-details">
-                                    <h3>{itemInfo?.name || "Item Name Not Available"}</h3>
-                                    <p className="item-price">
-                                        ₹{itemInfo?.price ? itemInfo.price / 100 : 
-                                           itemInfo?.defaultPrice ? itemInfo.defaultPrice / 100 : 
-                                           "Price Not Available"}
-                                    </p>
-                                    {itemInfo?.description && <p className="item-desc">{itemInfo.description}</p>}
+                                {/* Cuisines */}
+                                <p className="text-gray-600 text-lg mb-2 font-medium">
+                                    {cuisines.join(", ")}
+                                </p>
+
+                                {/* Location */}
+                                <p className="text-gray-500 text-base mb-4 flex items-center">
+                                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                                    </svg>
+                                    {areaName}
+                                </p>
+
+                                {/* Rating, Time, and Cost Row */}
+                                <div className="flex items-center space-x-6">
+                                    {/* Rating */}
+                                    {avgRating && (
+                                        <div className="flex items-center">
+                                            <div className="bg-green-600 text-white px-2 py-1 rounded-md flex items-center space-x-1">
+                                                <span className="font-bold text-sm">★</span>
+                                                <span className="font-bold text-sm">{avgRating}</span>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Delivery Time */}
+                                    {sla?.slaString && (
+                                        <div className="flex items-center text-gray-700">
+                                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span className="font-semibold text-sm uppercase tracking-wide">
+                                                {sla.slaString}
+                                            </span>
+                                        </div>
+                                    )}
+
+                                    {/* Cost for Two */}
+                                    {costForTwoMessage && (
+                                        <div className="text-gray-700 font-semibold text-sm">
+                                            {costForTwoMessage}
+                                        </div>
+                                    )}
                                 </div>
-                            </li>
-                        );
-                    })}
-                </ul>
-            ) : (
-                <p>No menu items available for this restaurant.</p>
-            )}
+                            </div>
+
+                            {/* Restaurant Logo/Image */}
+                            <div className="ml-8">
+                                {finalRestaurantImage ? (
+                                    <div className="w-24 h-24 rounded-2xl shadow-lg overflow-hidden border-4 border-white">
+                                        <img
+                                            src={finalRestaurantImage}
+                                            alt={name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center border-4 border-orange-200">
+                                        <span className="text-3xl font-bold text-orange-500">
+                                            {name.charAt(0)}
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Menu Section */}
+            <div className="max-w-6xl mx-auto px-6 py-8">
+                {/* Menu Header */}
+                <div className="bg-orange-500 text-white px-6 py-4 rounded-t-2xl">
+                    <div className="flex items-center">
+                        <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <h2 className="text-xl font-bold">Menu</h2>
+                    </div>
+                </div>
+
+                {/* Menu Content */}
+                <div className="bg-white rounded-b-2xl shadow-lg border-x border-b border-gray-200">
+                    {categories.length === 0 ? (
+                        <div className="text-center py-12">
+                            <div className="text-gray-500">
+                                <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                                <p className="text-lg font-medium">Menu items not available at the moment.</p>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="p-2">
+                            {categories.map((category, index) => (
+                                <RestaurantCategory
+                                    key={index}
+                                    data={category?.card?.card}
+                                    showItems={index === showIndex}
+                                    setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
-
-}
+};
 
 export default RestaurantMenu;

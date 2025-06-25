@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "test-tailwind": "parcel tailwind-test.html"
   },
   "browserslist": [
     "last 2 versions",
@@ -28,9 +29,15 @@
   },
   "homepage": "https://github.com/GurpreetDel/namaste-react#readme",
   "devDependencies": {
-    "parcel": "^2.15.0"
+    "@parcel/transformer-postcss": "^2.8.0",
+    "autoprefixer": "^10.4.14",
+    "parcel": "^2.15.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.4.17"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
+    "@tailwindcss/vite": "^4.1.8",
     "ansi-styles": "^4.3.0",
     "base-x": "^3.0.11",
     "braces": "^3.0.3",
@@ -84,6 +91,7 @@
     "type-fest": "^0.20.2",
     "update-browserslist-db": "^1.1.3",
     "utility-types": "^3.11.0",
+    "vite": "^6.3.5",
     "weak-lru-cache": "^1.2.2"
   }
 }

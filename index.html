@@ -8,14 +8,18 @@
     <!-- Page title that appears in browser tab -->
     <title>Namaste React</title>
     <!-- Link to external CSS stylesheet for styling -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./src/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
-<body>
+<body class="bg-background font-sans">
     <!-- 
         Root container for our application
         This demonstrates the first approach: Plain HTML
     -->
-    <div id="root">
+    <div id="root" class="min-h-screen">
         <!--<h1 id="htmlHeading">Hello World from HTML</h1>-->
     </div>
 
@@ -50,6 +54,10 @@
         This demonstrates the third approach: React components
         The type="module" attribute allows us to use ES6 import/export syntax
     -->
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
     <script type="module" src="src/app4.js"></script>
 </body>
 </html>
