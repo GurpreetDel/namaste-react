@@ -2,6 +2,7 @@ import React, { useState, useEffect,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector} from "react-redux";
 
 const Header = () => {
     const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -10,6 +11,9 @@ const Header = () => {
     const { loggedInUser } = useContext(UserContext);
 
     console.log("loggedInUser", loggedInUser);
+
+    const cartItems = useSelector( (store) => store.cart.items );
+    console.log("cartItems", cartItems);
 
     useEffect(() => {
         console.log("Header component mounted/updated");
@@ -109,7 +113,7 @@ const Header = () => {
                                 <circle cx="15" cy="12" r="1"/>
                             </svg>
                             <span className="text-sm font-medium">0</span>
-                            <span className="text-sm font-medium hidden sm:inline">Cart</span>
+                            <span className="text-sm font-medium hidden sm:inline">Cart ({cartItems.length} items ) </span>
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 // Lazy load Grocery component for code splitting
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -142,14 +144,16 @@ const AppLayout = () => {
     }
 
     return (
-        <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-            <div className="min-h-screen bg-background">
-                <Header />
-                <main className="min-h-screen">
-                    <Outlet />
-                </main>
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+                <div className="min-h-screen bg-background">
+                    <Header />
+                    <main className="min-h-screen">
+                        <Outlet />
+                    </main>
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 };
 
